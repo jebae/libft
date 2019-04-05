@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 20:04:52 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 17:43:57 by jebae            ###   ########.fr       */
+/*   Created: 2019/04/05 19:29:23 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/05 19:29:24 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int i, char *as))
 {
-	unsigned char	*buf;
-	unsigned char	*p_dst;
-	unsigned char	*p_src;
+	char	*p_s;
 
-	p_dst = (unsigned char *)dst;
-	p_src = (unsigned char *)src;
-	if (p_dst + len <= p_src || p_src + len <= p_dst)
-		ft_memcpy(dst, src, len);
-	else
+	if (s == NULL || f == NULL)
+		return ;
+	p_s = s;
+	while (*p_s != '\0')
 	{
-		buf = (unsigned char *)malloc(sizeof(unsigned char) * len);
-		ft_memcpy(buf, src, len);
-		ft_memcpy(dst, buf, len);
-		free(buf);
+		(*f)(p_s - s, p_s);
+		p_s++;
 	}
-	return (dst);
 }

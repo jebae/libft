@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 16:45:10 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/05 22:03:29 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,41 @@ int			ft_atoi(const char *str);
 int			ft_isalpha(int c);
 
 int			ft_isalnum(int c);
+
+int			ft_isascii(int c);
+
+int			ft_isprint(int c);
+
+int			ft_toupper(int c);
+
+int			ft_tolower(int c);
+
+void		*ft_memalloc(size_t size);
+
+void		ft_memdel(void **ap);
+
+char		*ft_strnew(size_t size);
+
+void		ft_strdel(char **as);
+
+void		ft_strclr(char *s);
+
+void		ft_striter(char *s, void (*f)(char *as));
+
+void		ft_striteri(char *s, void (*f)(unsigned int i, char *as));
+
+char		*ft_strmap(const char *s, char (*f)(char ch));
+
+char		*ft_strmapi(const char *s, char (*f)(unsigned int i, char ch));
+
+int			ft_strequ(const char *s1, const char *s2);
+
+int			ft_strnequ(const char *s1, const char *s2, size_t n);
+
+char		*ft_strsub(const char *s, unsigned int start, size_t len);
+
+char		*ft_strjoin(const char *s1, const char *s2);
+
+char		*ft_strtrim(const char *s);
 
 #endif

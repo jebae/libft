@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 20:04:52 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 17:43:57 by jebae            ###   ########.fr       */
+/*   Created: 2019/04/05 20:08:51 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/05 20:08:52 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_strequ(const char *s1, const char *s2)
 {
-	unsigned char	*buf;
-	unsigned char	*p_dst;
-	unsigned char	*p_src;
-
-	p_dst = (unsigned char *)dst;
-	p_src = (unsigned char *)src;
-	if (p_dst + len <= p_src || p_src + len <= p_dst)
-		ft_memcpy(dst, src, len);
-	else
-	{
-		buf = (unsigned char *)malloc(sizeof(unsigned char) * len);
-		ft_memcpy(buf, src, len);
-		ft_memcpy(dst, buf, len);
-		free(buf);
-	}
-	return (dst);
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	return (ft_strcmp(s1, s2) == 0);
 }

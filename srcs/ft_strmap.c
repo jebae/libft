@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 20:04:52 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 17:43:57 by jebae            ###   ########.fr       */
+/*   Created: 2019/04/05 19:48:19 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/05 19:48:20 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strmap(const char *s, char (*f)(char ch))
 {
-	unsigned char	*buf;
-	unsigned char	*p_dst;
-	unsigned char	*p_src;
+	char		*new_str;
+	size_t		len;
 
-	p_dst = (unsigned char *)dst;
-	p_src = (unsigned char *)src;
-	if (p_dst + len <= p_src || p_src + len <= p_dst)
-		ft_memcpy(dst, src, len);
-	else
-	{
-		buf = (unsigned char *)malloc(sizeof(unsigned char) * len);
-		ft_memcpy(buf, src, len);
-		ft_memcpy(dst, buf, len);
-		free(buf);
-	}
-	return (dst);
+	if (s == NULL || f == NULL)
+		return (NULL);
+	len = ft_strlen(s);
+	new_str = (char *)malloc(len + 1);
+	if (new_str == NULL)
+		return (NULL);
+	new_str[len] = '\0';
+	while (len-- > 0)
+		new_str[len] = (*f)(s[len]);
+	return (new_str);
 }

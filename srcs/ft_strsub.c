@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 20:04:52 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 17:43:57 by jebae            ###   ########.fr       */
+/*   Created: 2019/04/05 21:10:13 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/05 22:01:59 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
-	unsigned char	*buf;
-	unsigned char	*p_dst;
-	unsigned char	*p_src;
+	char	*sub;
 
-	p_dst = (unsigned char *)dst;
-	p_src = (unsigned char *)src;
-	if (p_dst + len <= p_src || p_src + len <= p_dst)
-		ft_memcpy(dst, src, len);
-	else
-	{
-		buf = (unsigned char *)malloc(sizeof(unsigned char) * len);
-		ft_memcpy(buf, src, len);
-		ft_memcpy(dst, buf, len);
-		free(buf);
-	}
-	return (dst);
+	if (s == NULL)
+		return (NULL);
+	sub = (char *)malloc(len + 1);
+	if (sub == NULL)
+		return (NULL);
+	ft_strncpy(sub, s + start, len);
+	sub[len] = '\0';
+	return (sub);
 }

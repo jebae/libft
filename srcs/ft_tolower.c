@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 20:04:52 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 17:43:57 by jebae            ###   ########.fr       */
+/*   Created: 2019/04/05 17:09:51 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/05 17:09:52 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_tolower(int c)
 {
-	unsigned char	*buf;
-	unsigned char	*p_dst;
-	unsigned char	*p_src;
-
-	p_dst = (unsigned char *)dst;
-	p_src = (unsigned char *)src;
-	if (p_dst + len <= p_src || p_src + len <= p_dst)
-		ft_memcpy(dst, src, len);
-	else
-	{
-		buf = (unsigned char *)malloc(sizeof(unsigned char) * len);
-		ft_memcpy(buf, src, len);
-		ft_memcpy(dst, buf, len);
-		free(buf);
-	}
-	return (dst);
+	return ((c >= 'A' && c <= 'Z') ? c + 0x20 : c);
 }

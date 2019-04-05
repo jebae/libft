@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:34:28 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/04 14:42:33 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/05 21:39:01 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	char	*p_dst;
 
 	p_dst = dst;
-	while (*src != '\0' && len > 0)
+	while (len > 0 && *src != '\0')
 	{
 		*(p_dst++) = *(src++);
 		len--;
