@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 15:51:53 by jebae             #+#    #+#              #
-#    Updated: 2019/04/05 22:03:49 by jebae            ###   ########.fr        #
+#    Updated: 2019/04/07 17:43:52 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .SILENT :
@@ -30,7 +30,12 @@ SRCS = srcs/ft_memset.c srcs/ft_bzero.c srcs/ft_memcpy.c\
 	   srcs/ft_strclr.c srcs/ft_striter.c srcs/ft_striteri.c\
 	   srcs/ft_strmap.c srcs/ft_strmapi.c srcs/ft_strequ.c\
 	   srcs/ft_strnequ.c srcs/ft_strsub.c srcs/ft_strjoin.c\
-	   srcs/ft_strtrim.c
+	   srcs/ft_strtrim.c srcs/ft_strsplit.c srcs/ft_itoa.c\
+	   srcs/ft_putchar.c srcs/ft_putchar_fd.c srcs/ft_putstr.c\
+	   srcs/ft_putendl.c srcs/ft_putnbr.c srcs/ft_putstr_fd.c\
+	   srcs/ft_putendl_fd.c srcs/ft_putnbr_fd.c srcs/ft_lstnew.c\
+	   srcs/ft_lstdelone.c srcs/ft_lstdel.c srcs/ft_lstadd.c\
+	   srcs/ft_lstiter.c srcs/ft_lstmap.c
 
 INCLUDES = ./includes
 
@@ -47,7 +52,12 @@ OBJS = ft_memset.o ft_bzero.o ft_memcpy.o\
 	   ft_strclr.o ft_striter.o ft_striteri.o\
 	   ft_strmap.o ft_strmapi.o ft_strequ.o\
 	   ft_strnequ.o ft_strsub.o ft_strjoin.o\
-	   ft_strtrim.o
+	   ft_strtrim.o ft_strsplit.o ft_itoa.o\
+	   ft_putchar.o ft_putchar_fd.o ft_putstr.o\
+	   ft_putendl.o ft_putnbr.o ft_putstr_fd.o\
+	   ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o\
+	   ft_lstdelone.o ft_lstdel.o ft_lstadd.o\
+	   ft_lstiter.o ft_lstmap.o
 
 all : $(NAME)
 

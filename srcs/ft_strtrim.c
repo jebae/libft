@@ -1,21 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/06 17:04:59 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/06 18:08:58 by jebae            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-
-// 오늘은 여기까지
-char	*ft_strtrim(const char *s)
+static int	is_whitespace(char ch)
 {
-	char	*end;
+	return (ch == ' ' || ch == '\t' || ch == '\n');
+}
+
+char		*ft_strtrim(const char *s)
+{
 	char	*trim;
+	char	*start;
+	char	*end;
 
 	if (s == NULL)
 		return (NULL);
-	end = (char *)s;
-	while (*end != ' ' && *end != '\n' && *end != '\t' && *end != '\0')
-		end++;
-	trim = (char *)malloc(sizeof(char) * (end - s + 1));
+	while (is_whitespace(*s))
+		s++;
+	start = (char *)s;
+	end = start;
+	while (*s != '\0')
+	{
+		if (!is_whitespace(*s))
+			end = (char *)s + 1;
+		s++;
+	}
+	trim = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (trim == NULL)
 		return (NULL);
-	ft_strncpy(trim, s, end - s);
-	trim[end - s] = '\0';
+	trim[end - start] = '\0';
+	ft_strncpy(trim, start, end - start);
 	return (trim);
 }

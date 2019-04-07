@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 17:48:50 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/07 17:48:52 by jebae            ###   ########.fr       */
+/*   Created: 2019/04/07 17:47:36 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/07 17:47:36 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int i, char ch))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char		*new_str;
-	size_t		len;
+	t_list	*map;
+	t_list	*cur;
+	t_list	*temp;
 
-	if (s == NULL || f == NULL)
+	if (lst == NULL)
 		return (NULL);
-	len = ft_strlen(s);
-	new_str = (char *)malloc(len + 1);
-	if (new_str == NULL)
-		return (NULL);
-	new_str[len] = '\0';
-	while (len-- > 0)
-		new_str[len] = (*f)(len, s[len]);
-	return (new_str);
+	temp = (*f)(lst);
+	map = ft_lstnew(temp->content, temp->content_size);
+	cur = map;
+	lst = lst->next;
+	while (lst)
+	{
+		temp = (*f)(lst);
+		cur->next = ft_lstnew(temp->content, temp->content_size);
+		lst = lst->next;
+		cur = cur->next;
+	}
+	return (map);
 }
