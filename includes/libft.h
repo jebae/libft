@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/07 21:03:06 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/09 16:59:31 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,10 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-const char			*boyer_moore(const char *text, const char *pat);
+char				*ft_boyer_moore(const char *text, const char *pat);
 
 char				*ft_strstr(const char *haystack, const char *needle);
+
+char				*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 #endif

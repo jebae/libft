@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 15:51:53 by jebae             #+#    #+#              #
-#    Updated: 2019/04/07 17:43:52 by jebae            ###   ########.fr        #
+#    Updated: 2019/04/09 17:55:43 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .SILENT :
@@ -36,7 +36,7 @@ SRCS = srcs/ft_memset.c srcs/ft_bzero.c srcs/ft_memcpy.c\
 	   srcs/ft_putendl_fd.c srcs/ft_putnbr_fd.c srcs/ft_lstnew.c\
 	   srcs/ft_lstdelone.c srcs/ft_lstdel.c srcs/ft_lstadd.c\
 	   srcs/ft_lstiter.c srcs/ft_lstmap.c srcs/ft_strstr.c\
-srcs/boyer_moore.c
+	   srcs/ft_boyer_moore.c srcs/ft_strnstr.c
 
 INCLUDES = ./includes
 
@@ -59,7 +59,7 @@ OBJS = ft_memset.o ft_bzero.o ft_memcpy.o\
 	   ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o\
 	   ft_lstdelone.o ft_lstdel.o ft_lstadd.o\
 	   ft_lstiter.o ft_lstmap.o ft_strstr.o\
-boyer_moore.o
+	   ft_boyer_moore.o ft_strnstr.o
 
 all : $(NAME)
 

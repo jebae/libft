@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 19:32:19 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/06 20:38:27 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/09 17:59:43 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static size_t		get_array_size(const char *s, const char c)
 	return (size);
 }
 
-/* return next address of delimiter */
 static const char	*split(char **p_str, const char *s, char c)
 {
 	char		*end;
