@@ -18,6 +18,6 @@ void	ft_lstdelone(t_list **alst,\
 	if (alst == NULL || *alst == NULL)
 		return ;
 	if ((*alst)->content != NULL)
-		del((*alst)->content, (*alst)->content_size);
+		(*del)((*alst)->content, (*alst)->content_size);
 	ft_memdel((void **)alst);
 }

@@ -61,11 +61,12 @@ char				**ft_strsplit(const char *s, char c)
 	if (s == NULL)
 		return (NULL);
 	i = get_array_size(s, c);
-	arr = (char **)malloc(sizeof(char *) * i);
+	arr = (char **)malloc(sizeof(char *) * (i + 1));
 	if (arr == NULL)
 		return (NULL);
 	j = 0;
 	while (j < i)
 		s = split(arr + j++, s, c);
+	arr[i] = NULL;
 	return (arr);
 }
