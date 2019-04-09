@@ -2,5 +2,5 @@
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	// boyer moore
+	return ((char *)boyer_moore(haystack, needle));
 }

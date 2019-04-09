@@ -139,4 +139,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+const char			*boyer_moore(const char *text, const char *pat);
+
+char				*ft_strstr(const char *haystack, const char *needle);
+
 #endif
