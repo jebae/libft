@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/09 16:59:31 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/10 14:34:56 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ char				*ft_boyer_moore(const char *text, const char *pat);
 
 char				*ft_strstr(const char *haystack, const char *needle);
 
-char				*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char				*ft_strnstr(const char *haystack,\
+		const char *needle, size_t len);
 
 #endif

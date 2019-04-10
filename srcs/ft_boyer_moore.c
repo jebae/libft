@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:58:15 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/09 17:58:16 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/10 14:32:56 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 #define CHARACTER_TABLE_SIZE 256
 #define MAX(a, b) ((a) > (b)) ? (a) : (b)
 
-static void			make_bc_table(int *table, const char *pat, int len)
+static void			make_bc_table(size_t *table, const char *pat, size_t len)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
 	while (i < CHARACTER_TABLE_SIZE)
-		table[i++] = -1;
+		table[i++] = len;
 	i = 0;
 	while (i < len)
 	{
-		table[(int)(pat[i])] = i;
+		table[(size_t)(pat[i])] = i;
 		i++;
 	}
 }
 
-static void			make_gs_table(int *shift_table, const char *pat, int len)
+static void			make_gs_table(size_t *shift_table,\
+		const char *pat, size_t len)
 {
-	int		pos_table[len];
-	int		i;
-	int		j;
+	size_t		pos_table[len];
+	size_t		i;
+	size_t		j;
 
 	i = len;
 	j = i + 1;
@@ -58,48 +59,52 @@ static void			make_gs_table(int *shift_table, const char *pat, int len)
 	}
 }
 
-static void			preprocess(int *bc_table, int *shift_table,\
-		const char *pat, int len)
+static void			preprocess(size_t *bc_table, size_t *shift_table,\
+		const char *pat, size_t len)
 {
 	make_bc_table(bc_table, pat, len);
 	make_gs_table(shift_table, pat, len);
 }
 
 static char			*search(const char *text, const char *pat,\
-		int *bc_table, int *shift_table)
+		size_t *bc_table, size_t *shift_table)
 {
-	int		i;
-	int		j;
-	int		text_len;
-	int		pat_len;
+	size_t		i;
+	size_t		j;
+	size_t		text_len;
+	size_t		pat_len;
 
 	text_len = ft_strlen(text);
 	pat_len = ft_strlen(pat);
 	i = 0;
+	if (text_len < pat_len)
+		return (NULL);
 	while (i <= text_len - pat_len)
 	{
-		j = pat_len - 1;
-		while (j >= 0 && pat[j] == text[i + j])
+		j = pat_len;
+		while (j > 0 && pat[j - 1] == text[i + (j - 1)])
 			j--;
-		if (j < 0)
+		if (j == 0)
 			return ((char *)text + i);
+		if (bc_table[(size_t)(text[i + j])] != pat_len)
+			i += MAX(shift_table[j],\
+					j - bc_table[(size_t)(text[i + j])]);
 		else
-			i += MAX(shift_table[j + 1],\
-					j - bc_table[(int)(text[i + j])]);
+			i += MAX(shift_table[j], j);
 	}
 	return (NULL);
 }
 
 char				*ft_boyer_moore(const char *text, const char *pat)
 {
-	int			pat_len;
-	int			bc_table[CHARACTER_TABLE_SIZE];
-	int			*shift_table;
+	size_t		pat_len;
+	size_t		bc_table[CHARACTER_TABLE_SIZE];
+	size_t		*shift_table;
 	char		*loc;
 
 	loc = NULL;
 	pat_len = ft_strlen(pat);
-	shift_table = ft_memalloc(sizeof(int) * (pat_len + 1));
+	shift_table = ft_memalloc(sizeof(size_t) * (pat_len + 1));
 	if (shift_table == NULL)
 		return (NULL);
 	preprocess(bc_table, shift_table, pat, pat_len);
