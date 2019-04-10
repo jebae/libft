@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 17:23:06 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/04 18:11:15 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/10 17:09:13 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
 	while (*p_dst != '\0')
 		p_dst++;
 	len_dst = p_dst - dst;
-	if (size <= len_dst + 1)
+	if (size < len_dst + 1)
 		return (ft_strlen(src) + size);
 	size -= len_dst;
 	p_src = src;
