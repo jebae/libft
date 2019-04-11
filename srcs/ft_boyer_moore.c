@@ -6,13 +6,11 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:58:15 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/10 14:32:56 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/11 14:29:31 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#define CHARACTER_TABLE_SIZE 256
-#define MAX(a, b) ((a) > (b)) ? (a) : (b)
 
 static void			make_bc_table(size_t *table, const char *pat, size_t len)
 {

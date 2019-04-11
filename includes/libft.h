@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/10 14:34:56 by jebae            ###   ########.fr       */
+/*   Updated: 2019/04/11 14:29:39 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# define LONG_LIMIT 0x7FFFFFFFFFFFFFFF
+# define CHARACTER_TABLE_SIZE 256
+# define MAX(a, b) ((a) > (b)) ? (a) : (b)
 
 typedef struct		s_list
 {
