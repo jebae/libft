@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/11 14:29:39 by jebae            ###   ########.fr       */
+/*   Updated: 2019/05/08 13:51:08 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,12 @@ char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack,\
 		const char *needle, size_t len);
 
-void				ft_sorted_lstadd(t_list **alst, t_list *n, int (*compare)(t_list *, t_list *));
+void				ft_sorted_lstadd(t_list **alst, t_list *n,\
+		int (*compare)(t_list *, t_list *));
 
 t_list				*ft_sorted_lstpop(t_list **alst);
+
+void				ft_lstsort(t_list **alst,\
+		int (*compare)(t_list *, t_list *));
 
 #endif

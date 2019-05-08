@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 15:51:53 by jebae             #+#    #+#              #
-#    Updated: 2019/04/11 20:18:41 by jebae            ###   ########.fr        #
+#    Updated: 2019/05/08 13:42:25 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ OBJS = ft_memset.o\
 	ft_lstadd.o\
 	ft_lstiter.o\
 	ft_lstmap.o\
+	ft_lstsort.o\
 	ft_strstr.o\
 	ft_boyer_moore.o\
 	ft_strnstr.o\
