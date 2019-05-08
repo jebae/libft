@@ -149,4 +149,8 @@ char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack,\
 		const char *needle, size_t len);
 
+void				ft_sorted_lstadd(t_list **alst, t_list *n, int (*compare)(t_list *, t_list *));
+
+t_list				*ft_sorted_lstpop(t_list **alst);
+
 #endif
