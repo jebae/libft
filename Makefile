@@ -20,7 +20,8 @@ SRCS = srcs/*.c
 
 INCLUDES = ./includes
 
-OBJS = ft_memset.o\
+OBJS = get_next_line.o\
+	ft_memset.o\
 	ft_bzero.o\
 	ft_memcpy.o\
 	ft_memccpy.o\
@@ -77,11 +78,13 @@ OBJS = ft_memset.o\
 	ft_lstiter.o\
 	ft_lstmap.o\
 	ft_lstsort.o\
+	ft_lstrev.o\
 	ft_strstr.o\
 	ft_boyer_moore.o\
 	ft_strnstr.o\
 	ft_sorted_lstadd.o\
 	ft_sorted_lstpop.o\
+	ft_hexatoi.o\
 
 all : $(NAME)
 

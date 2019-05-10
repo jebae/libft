@@ -157,4 +157,8 @@ t_list				*ft_sorted_lstpop(t_list **alst);
 void				ft_lstsort(t_list **alst,\
 		int (*compare)(t_list *, t_list *));
 
+void				ft_lstrev(t_list **alst);
+
+int					ft_hexatoi(const char *str);
+
 #endif
