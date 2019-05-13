@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 15:51:53 by jebae             #+#    #+#              #
-#    Updated: 2019/05/08 13:42:25 by jebae            ###   ########.fr        #
+#    Updated: 2019/05/13 14:15:20 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ OBJS = get_next_line.o\
 	ft_sorted_lstpop.o\
 	ft_hexatoi.o\
 	ft_ishexdigit.o\
+	ft_lstlen.o\
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/05/08 13:51:08 by jebae            ###   ########.fr       */
+/*   Updated: 2019/05/13 14:15:09 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,5 +162,7 @@ void				ft_lstrev(t_list **alst);
 int					ft_hexatoi(const char *str);
 
 int					ft_ishexdigit(int c);
+
+size_t				ft_lstlen(t_list *lst);
 
 #endif
