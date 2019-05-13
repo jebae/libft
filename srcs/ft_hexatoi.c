@@ -15,7 +15,7 @@ int			ft_hexatoi(const char *str)
 	if (ft_strncmp(str, "0x", 2) != 0)
 		return (-1);
 	str += 2;
-	while (*str != '\0')
+	while (ft_ishexdigit(*str))
 	{
 		if (*str >= '0' && *str <= '9')
 			res = res * 16 + (*str - '0');
@@ -23,8 +23,6 @@ int			ft_hexatoi(const char *str)
 			res = res * 16 + (*str - 'a' + 10);
 		else if (*str >= 'A' && *str <= 'F')
 			res = res * 16 + (*str - 'A' + 10);
-		else
-			return (-1);
 		str++;
 	}
 	return ((int)res);

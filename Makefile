@@ -85,6 +85,7 @@ OBJS = get_next_line.o\
 	ft_sorted_lstadd.o\
 	ft_sorted_lstpop.o\
 	ft_hexatoi.o\
+	ft_ishexdigit.o\
 
 all : $(NAME)
 

@@ -161,4 +161,6 @@ void				ft_lstrev(t_list **alst);
 
 int					ft_hexatoi(const char *str);
 
+int					ft_ishexdigit(int c);
+
 #endif

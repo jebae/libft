@@ -1,80 +1,80 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/17 17:45:47 by jebae             #+#    #+#             */
+/*   Updated: 2019/04/18 16:09:05 by jebae            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
-#include <stdio.h>
-
-int			check_bucket(t_bucket *bucket)
-{
-	if (bucket->loc == 0)
-		return (BUCKET_EMPTY);
-	if (bucket->loc > BUFF_SIZE)
-		return (BUCKET_FULL);
-	return (BUCKET_REMAINED);
-}
-
-int			write_line(t_bucket *bucket, char **line)
-{
-	char		*buf;
-	char		*tmp_line;
-	char		stop;
-	size_t		i;
-
-	i = 0;
-	buf = bucket->buf + bucket->loc;
-	while (i < BUFF_SIZE && buf[i] != '\n')
-		i++;
-	tmp_line = *line;
-	stop = buf[i];
-	buf[i] = '\0';
-	*line = ft_strjoin(*line, buf);
-	buf[i] = stop;
-	ft_memdel((void **)&tmp_line);
-	if (*line == NULL)
-		return (WRITE_LINE_FAIL);
-	bucket->loc += i + 1;
-	return (WRITE_LINE_SUCCESS);
-}
-
 
 int			preprocess(const int fd, char **line)
 {
 	if (fd < 0 || line == NULL || BUFF_SIZE <= 0)
 		return (PREPROCESS_FAIL);
 	*line = ft_strnew(0);
+	if (*line == NULL)
+		return (PREPROCESS_FAIL);
 	return (PREPROCESS_SUCCESS);
+}
+
+int			handle_error(char **line)
+{
+	if (**line == '\0')
+		ft_memdel((void **)line);
+	return (GNL_ERROR);
+}
+
+int			write_line(t_bucket *bucket, char **line)
+{
+	char		*buf;
+	char		*tmp_line;
+	size_t		i;
+
+	i = 0;
+	buf = bucket->buf + bucket->loc;
+	while (bucket->loc + i < BUFF_SIZE && buf[i] != '\n')
+		i++;
+	tmp_line = *line;
+	buf[i] = '\0';
+	*line = ft_strjoin(*line, buf);
+	ft_memdel((void **)&tmp_line);
+	if (*line == NULL)
+		return (WRITE_LINE_FAIL);
+	bucket->loc += i + 1;
+	if (bucket->loc <= BUFF_SIZE)
+		return (WRITE_LINE_SUCCESS);
+	ft_bzero((void *)bucket->buf, BUFF_SIZE + 1);
+	bucket->loc = 0;
+	return (WRITE_LINE_SUCCESS);
 }
 
 int			get_next_line(const int fd, char **line)
 {
 	static t_bucket		bucket;
 	int					ret;
-	int					bucket_status;
 
 	if (preprocess(fd, line) == PREPROCESS_FAIL)
 		return (GNL_ERROR);
-	bucket_status = check_bucket(&bucket);
-	while (bucket_status == BUCKET_EMPTY || bucket_status == BUCKET_REMAINED)
+	if (bucket.loc != 0 && write_line(&bucket, line) == WRITE_LINE_FAIL)
+		return (handle_error(line));
+	while (bucket.loc == 0)
 	{
-		if (bucket_status == BUCKET_EMPTY)
+		if ((ret = read(fd, bucket.buf, BUFF_SIZE)) == -1)
+			return (handle_error(line));
+		if (ret == 0)
 		{
-			ret = read(fd, bucket.buf, BUFF_SIZE);
-			if (ret == -1)
-				return (GNL_ERROR);
-			if (ret == 0 && (*line)[0] == '\0')
-			{
-				ft_memdel((void **)line);
-				return (GNL_READ_COMPLETE);
-			}
+			if (**line != '\0')
+				return (GNL_LINE_READ);
+			ft_memdel((void **)line);
+			return (GNL_READ_COMPLETE);
 		}
 		if (write_line(&bucket, line) == WRITE_LINE_FAIL)
-			return (GNL_ERROR);
-		if (check_bucket(&bucket) == BUCKET_FULL)
-		{
-			ft_bzero((void *)bucket.buf, BUFF_SIZE + 1);
-			bucket.loc = 0;
-			bucket_status = BUCKET_EMPTY;
-			if (bucket.buf[BUFF_SIZE - 1] != '\0')
-				continue ;
-		}
-		return (GNL_LINE_READ);
+			return (handle_error(line));
 	}
-	return (GNL_ERROR);
+	return (GNL_LINE_READ);
 }
