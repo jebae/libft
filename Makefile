@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 15:51:53 by jebae             #+#    #+#              #
-#    Updated: 2019/05/13 14:15:20 by jebae            ###   ########.fr        #
+#    Updated: 2019/05/14 15:24:45 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ OBJS = get_next_line.o\
 	ft_hexatoi.o\
 	ft_ishexdigit.o\
 	ft_lstlen.o\
+	ft_iswhitespace.o\
 
 all : $(NAME)
 
