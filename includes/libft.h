@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/05/14 15:24:31 by jebae            ###   ########.fr       */
+/*   Updated: 2019/05/17 13:11:42 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # define LONG_LIMIT 0x7FFFFFFFFFFFFFFF
 # define CHARACTER_TABLE_SIZE 256
 # define MAX(a, b) ((a) > (b)) ? (a) : (b)
+# define KRED "\x1B[31m"
+# define KGRN "\x1B[32m"
+# define KYEL "\x1B[33m"
+# define KNRM "\x1B[0m"
 
 typedef struct		s_list
 {
