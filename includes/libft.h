@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/05/17 13:11:42 by jebae            ###   ########.fr       */
+/*   Updated: 2019/05/20 16:57:29 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define LONG_LIMIT 0x7FFFFFFFFFFFFFFF
 # define CHARACTER_TABLE_SIZE 256
 # define MAX(a, b) ((a) > (b)) ? (a) : (b)
+# define ABS(N) ((N < 0) ? -(N) : (N))
 # define KRED "\x1B[31m"
 # define KGRN "\x1B[32m"
 # define KYEL "\x1B[33m"
