@@ -88,6 +88,7 @@ OBJS = get_next_line.o\
 	ft_ishexdigit.o\
 	ft_lstlen.o\
 	ft_iswhitespace.o\
+	get_file_content.o\
 
 all : $(NAME)
 

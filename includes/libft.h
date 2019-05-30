@@ -172,4 +172,6 @@ size_t				ft_lstlen(t_list *lst);
 
 int					ft_iswhitespace(char ch);
 
+char				*get_file_content(int fd);
+
 #endif
