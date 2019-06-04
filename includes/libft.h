@@ -172,4 +172,9 @@ size_t				ft_lstlen(t_list *lst);
 
 int					ft_iswhitespace(char ch);
 
+void				put_color_str(const char *color, const char *s);
+
+void				ft_lstiter_with_arg(t_list *lst,\
+	void (*f)(t_list *elem, void *arg), void *arg);
+
 #endif

@@ -88,6 +88,8 @@ OBJS = get_next_line.o\
 	ft_ishexdigit.o\
 	ft_lstlen.o\
 	ft_iswhitespace.o\
+	put_color_str.o\
+	ft_lstiter_with_arg.o\
 
 all : $(NAME)
 
@@ -95,7 +97,7 @@ $(NAME) : $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-$(OBJS) :
+$(OBJS) : $(SRCS)
 	$(CC) $(CFLAGS) -c $(SRCS) -I $(INCLUDES)
 
 clean :
