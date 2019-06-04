@@ -177,4 +177,6 @@ void				put_color_str(const char *color, const char *s);
 void				ft_lstiter_with_arg(t_list *lst,\
 	void (*f)(t_list *elem, void *arg), void *arg);
 
+char				*get_file_content(int fd);
+
 #endif

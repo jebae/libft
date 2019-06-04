@@ -90,6 +90,7 @@ OBJS = get_next_line.o\
 	ft_iswhitespace.o\
 	put_color_str.o\
 	ft_lstiter_with_arg.o\
+	get_file_content.o\
 
 all : $(NAME)
 
