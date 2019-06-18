@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/06/18 18:09:32 by jebae            ###   ########.fr        #
+#    Updated: 2019/06/18 18:33:56 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,10 @@ CFLAGS = -Wall -Wextra -Werror
 SRCDIR = srcs
 
 OBJDIR = objs
+
+INCDIR = includes
+
+INCLUDES = -I ./includes
 
 SRCS = get_next_line.c\
 	ft_memset.c\
@@ -94,8 +98,6 @@ SRCS = get_next_line.c\
 	ft_lstiter_with_arg.c\
 	get_file_content.c
 
-INCLUDES = ./includes
-
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
 all : $(NAME)
@@ -107,8 +109,8 @@ $(NAME) : $(OBJDIR) $(OBJS)
 $(OBJDIR) :
 	mkdir -p $(OBJDIR)
 
-$(OBJDIR)/%.o : $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+$(OBJDIR)/%.o : $(SRCDIR)/%.c $(INCDIR)/libft.h $(INCDIR)/get_next_line.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean :
 	rm -rf $(OBJS)
