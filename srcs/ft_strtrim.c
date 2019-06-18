@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 17:04:59 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/06 18:08:58 by jebae            ###   ########.fr       */
+/*   Updated: 2019/06/18 17:58:51 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char		*ft_strtrim(const char *s)
 			end = (char *)s + 1;
 		s++;
 	}
-	trim = (char *)malloc(sizeof(char) * (end - start + 1));
+	trim = (char *)ft_memalloc(sizeof(char) * (end - start + 1));
 	if (trim == NULL)
 		return (NULL);
 	trim[end - start] = '\0';

@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 19:32:19 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/09 17:59:43 by jebae            ###   ########.fr       */
+/*   Updated: 2019/06/18 17:58:16 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static const char	*split(char **p_str, const char *s, char c)
 	while (*end != c && *end != '\0')
 		end++;
 	len = end - s;
-	*p_str = (char *)malloc(sizeof(char) * (len + 1));
+	*p_str = (char *)ft_memalloc(sizeof(char) * (len + 1));
 	if (*p_str == NULL)
 		return (NULL);
 	ft_strncpy(*p_str, s, len);
@@ -61,7 +61,7 @@ char				**ft_strsplit(const char *s, char c)
 	if (s == NULL)
 		return (NULL);
 	i = get_array_size(s, c);
-	arr = (char **)malloc(sizeof(char *) * (i + 1));
+	arr = (char **)ft_memalloc(sizeof(char *) * (i + 1));
 	if (arr == NULL)
 		return (NULL);
 	j = 0;

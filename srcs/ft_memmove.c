@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:04:52 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 17:43:57 by jebae            ###   ########.fr       */
+/*   Updated: 2019/06/18 18:06:44 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		ft_memcpy(dst, src, len);
 	else
 	{
-		buf = (unsigned char *)malloc(sizeof(unsigned char) * len);
+		buf = (unsigned char *)ft_memalloc(sizeof(unsigned char) * len);
 		ft_memcpy(buf, src, len);
 		ft_memcpy(dst, buf, len);
 		free(buf);

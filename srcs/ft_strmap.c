@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 19:48:19 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/05 19:48:20 by jebae            ###   ########.fr       */
+/*   Updated: 2019/06/18 17:57:49 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmap(const char *s, char (*f)(char ch))
 	if (s == NULL || f == NULL)
 		return (NULL);
 	len = ft_strlen(s);
-	new_str = (char *)malloc(len + 1);
+	new_str = (char *)ft_memalloc(len + 1);
 	if (new_str == NULL)
 		return (NULL);
 	new_str[len] = '\0';

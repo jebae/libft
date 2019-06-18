@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 20:37:38 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/10 14:48:57 by jebae            ###   ########.fr       */
+/*   Updated: 2019/06/18 17:56:28 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char			*ft_itoa(int n)
 	char	*a;
 
 	j = get_length(n);
-	a = (char *)malloc(sizeof(char) * (j + 1));
+	a = (char *)ft_memalloc(sizeof(char) * (j + 1));
 	if (a == NULL)
 		return (NULL);
 	a[j--] = '\0';
