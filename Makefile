@@ -10,7 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all clean fclean re
+RED=\e[1;31m%s\e[0m
+GRN=\e[1;32m%s\e[0m
+YEL=\e[1;33m%s\e[0m
 
 NAME = libft.a
 
@@ -103,19 +105,22 @@ OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 all : $(NAME)
 
 $(NAME) : $(OBJDIR) $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 $(OBJDIR) :
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c $(INCDIR)/libft.h $(INCDIR)/get_next_line.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@printf "$(YEL)\n" "-> compile $<"
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean :
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all
+
+.PHONY : all clean fclean re
