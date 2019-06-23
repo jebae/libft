@@ -10,24 +10,32 @@
 #                                                                              #
 # **************************************************************************** #
 
-RED=\e[1;31m%s\e[0m
-GRN=\e[1;32m%s\e[0m
-YEL=\e[1;33m%s\e[0m
+# utils
+KRED=\033[0;31m
+KGRN=\033[0;32m
+KYEL=\033[0;33m
+KNRM=\033[0m
+COUNTER = 0
 
-NAME = libft.a
-
+# compiler
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+# lib name
+NAME = libft.a
 
+# path
 SRCDIR = srcs
 
 OBJDIR = objs
 
 INCDIR = includes
 
-INCLUDES = -I ./includes
+# compiler options
+CFLAGS = -Wall -Wextra -Werror
 
+INCLUDES = -I ./$(INCDIR)
+
+# srcs
 SRCS = get_next_line.c\
 	ft_memset.c\
 	ft_bzero.c\
@@ -100,21 +108,32 @@ SRCS = get_next_line.c\
 	ft_lstiter_with_arg.c\
 	get_file_content.c
 
+# objs
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
+# compile objs
+$(OBJDIR)/%.o : $(SRCDIR)/%.c $(INCDIR)/libft.h $(INCDIR)/get_next_line.h
+	@printf "$(KGRN)[libft]$(KNRM) compile $<\n"
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(eval COUNTER=$(shell echo $$(($(COUNTER) + 1))))
+
+# build
 all : $(NAME)
 
-$(NAME) : $(OBJDIR) $(OBJS)
+$(NAME) : pre_build $(OBJDIR) $(OBJS) post_build
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
+
+pre_build :
+	@printf "$(KGRN)[libft] $(KYEL)build $(NAME)\n$(KNRM)"
+
+post_build :
+	@printf "$(KGRN)[libft] $(KYEL)$(COUNTER) files compiled\n$(KNRM)"
 
 $(OBJDIR) :
 	@mkdir -p $(OBJDIR)
 
-$(OBJDIR)/%.o : $(SRCDIR)/%.c $(INCDIR)/libft.h $(INCDIR)/get_next_line.h
-	@printf "$(YEL)\n" "-> compile $<"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
+# commands
 clean :
 	@rm -rf $(OBJS)
 
@@ -123,4 +142,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all pre_build post_build clean fclean re
