@@ -106,7 +106,17 @@ SRCS = get_next_line.c\
 	ft_iswhitespace.c\
 	put_color_str.c\
 	ft_lstiter_with_arg.c\
-	get_file_content.c
+	get_file_content.c\
+	queue_init.c\
+	queue_push.c\
+	queue_pop.c\
+	btree_create_node.c\
+	btree_insert_data.c\
+	btree_bfs.c\
+	btree_apply_postorder.c\
+	btree_delone.c\
+	btree_del.c\
+	btree_search_one.c\
 
 # objs
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
