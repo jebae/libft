@@ -14,7 +14,9 @@ void		btree_insert_data(
 		*root = btree_create_node(content, content_size);
 		return ;
 	}
-	if (cmpf((*root)->content, content) < 0)
+	if (cmpf((*root)->content, content) == 0)
+		return ;
+	else if (cmpf((*root)->content, content) < 0)
 	{
 		if ((*root)->left == NULL)
 			(*root)->left = btree_create_node(content, content_size);

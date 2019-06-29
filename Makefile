@@ -113,10 +113,21 @@ SRCS = get_next_line.c\
 	btree_create_node.c\
 	btree_insert_data.c\
 	btree_bfs.c\
+	btree_apply_inorder.c\
 	btree_apply_postorder.c\
 	btree_delone.c\
 	btree_del.c\
 	btree_search_one.c\
+	btree_remove_if.c\
+	btree_foreach.c\
+	btree_foreach_with_arg.c\
+	set_init.c\
+	set_add.c\
+	set_remove_if.c\
+	set_del.c\
+	set_foreach.c\
+	set_foreach_with_arg.c\
+	set_length.c\
 
 # objs
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))

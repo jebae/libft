@@ -47,6 +47,12 @@ typedef struct		s_btree
 	void			*content;
 }					t_btree;
 
+typedef struct		s_set
+{
+	t_btree			*tree;
+	int				(*cmpf)(void *, void *);
+}					t_set;
+
 void				*ft_memset(void *b, int c, size_t len);
 
 void				ft_bzero(void *s, size_t n);
@@ -232,6 +238,11 @@ void				btree_insert_data(
 
 void				btree_bfs(t_btree *root, void (*f)(void *content));
 
+void				btree_apply_inorder(
+	t_btree *root,
+	void (*applyf)(void *)
+);
+
 void				btree_apply_postorder(
 	t_btree *root,
 	void (*applyf)(void *)
@@ -246,5 +257,48 @@ void				*btree_search_one(
 	void *p_data,
 	int (*cmpf)(void *, void *)
 );
+
+void				btree_remove_if(
+	t_btree **root,
+	void *p_data,
+	int (*cmpf)(void *, void *)
+);
+
+void				btree_foreach(
+	t_btree *root,
+	void (*f)(void *content)
+);
+
+void				btree_foreach_with_arg(
+	t_btree *root,
+	void *arg,
+	void (*f)(void *content, void *arg)
+);
+
+t_set				set_init(int (*cmpf)(void *, void *));
+
+void				set_add(
+	t_set *set,
+	void *content,
+	size_t content_size
+);
+
+void				set_remove_if(
+	t_set *set,
+	void *p_data,
+	int (*cmpf)(void *, void *)
+);
+
+void				set_del(t_set *set);
+
+void				set_foreach(t_set *set, void (*f)(void *content));
+
+void				set_foreach_with_arg(
+	t_set *set,
+	void *arg,
+	void (*f)(void *content, void *arg)
+);
+
+size_t				set_length(t_set *set);
 
 #endif
