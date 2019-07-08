@@ -13,6 +13,8 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+#include <stdio.h>
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
@@ -31,6 +33,25 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_queue
+{
+	t_list			*front;
+	t_list			*rear;
+}					t_queue;
+
+typedef struct		s_btree
+{
+	struct s_btree	*left;
+	struct s_btree	*right;
+	void			*content;
+}					t_btree;
+
+typedef struct		s_set
+{
+	t_btree			*tree;
+	int				(*cmpf)(void *, void *);
+}					t_set;
 
 void				*ft_memset(void *b, int c, size_t len);
 
@@ -100,8 +121,10 @@ void				ft_striteri(char *s, void (*f)(unsigned int i, char *as));
 
 char				*ft_strmap(const char *s, char (*f)(char ch));
 
-char				*ft_strmapi(const char *s,\
-		char (*f)(unsigned int i, char ch));
+char				*ft_strmapi(
+	const char *s,
+	char (*f)(unsigned int i, char ch)
+);
 
 int					ft_strequ(const char *s1, const char *s2);
 
@@ -135,11 +158,15 @@ void				ft_putnbr_fd(int n, int fd);
 
 t_list				*ft_lstnew(const void *content, size_t content_size);
 
-void				ft_lstdelone(t_list **alst,\
-		void (*del)(void *content, size_t content_size));
+void				ft_lstdelone(
+	t_list **alst,
+	void (*del)(void *content, size_t content_size)
+);
 
-void				ft_lstdel(t_list **alst,\
-		void (*del)(void *content, size_t content_size));
+void				ft_lstdel(
+	t_list **alst,
+	void (*del)(void *content, size_t content_size)
+);
 
 void				ft_lstadd(t_list **alst, t_list *n);
 
@@ -151,16 +178,24 @@ char				*ft_boyer_moore(const char *text, const char *pat);
 
 char				*ft_strstr(const char *haystack, const char *needle);
 
-char				*ft_strnstr(const char *haystack,\
-		const char *needle, size_t len);
+char				*ft_strnstr(
+	const char *haystack,
+	const char *needle,
+	size_t len
+);
 
-void				ft_sorted_lstadd(t_list **alst, t_list *n,\
-		int (*compare)(t_list *, t_list *));
+void				ft_sorted_lstadd(
+	t_list **alst,
+	t_list *n,
+	int (*compare)(t_list *, t_list *)
+);
 
 t_list				*ft_sorted_lstpop(t_list **alst);
 
-void				ft_lstsort(t_list **alst,\
-		int (*compare)(t_list *, t_list *));
+void				ft_lstsort(
+	t_list **alst,
+	int (*compare)(t_list *, t_list *)
+);
 
 void				ft_lstrev(t_list **alst);
 
@@ -176,9 +211,96 @@ void				ft_swap(void *p1, void *p2, size_t size);
 
 void				put_color_str(const char *color, const char *s);
 
-void				ft_lstiter_with_arg(t_list *lst,\
-	void (*f)(t_list *elem, void *arg), void *arg);
+void				ft_lstiter_with_arg(
+	t_list *lst,
+	void (*f)(t_list *elem, void *arg),
+	void *arg
+);
 
 char				*get_file_content(int fd);
+
+t_queue				queue_init(void);
+
+void				queue_push(
+	t_queue *queue,
+	void *content,
+	size_t content_size
+);
+
+void				*queue_pop(t_queue *queue);
+
+t_btree				*btree_create_node(void *content, size_t content_size);
+
+void				btree_insert_data(
+	t_btree **root,
+	void *content,
+	size_t content_size,
+	int (*cmpf)(void *, void *)
+);
+
+void				btree_bfs(t_btree *root, void (*f)(void *content));
+
+void				btree_apply_inorder(
+	t_btree *root,
+	void (*applyf)(void *)
+);
+
+void				btree_apply_postorder(
+	t_btree *root,
+	void (*applyf)(void *)
+);
+
+void				btree_delone(t_btree **node, void (*del)(void *content));
+
+void				btree_del(t_btree **root, void (*del)(void *content));
+
+void				*btree_search_one(
+	t_btree *root,
+	void *p_data,
+	int (*cmpf)(void *, void *)
+);
+
+void				btree_remove_if(
+	t_btree **root,
+	void *p_data,
+	int (*cmpf)(void *, void *)
+);
+
+void				btree_foreach(
+	t_btree *root,
+	void (*f)(void *content)
+);
+
+void				btree_foreach_with_arg(
+	t_btree *root,
+	void *arg,
+	void (*f)(void *content, void *arg)
+);
+
+t_set				set_init(int (*cmpf)(void *, void *));
+
+void				set_add(
+	t_set *set,
+	void *content,
+	size_t content_size
+);
+
+void				set_remove_if(
+	t_set *set,
+	void *p_data,
+	int (*cmpf)(void *, void *)
+);
+
+void				set_del(t_set *set);
+
+void				set_foreach(t_set *set, void (*f)(void *content));
+
+void				set_foreach_with_arg(
+	t_set *set,
+	void *arg,
+	void (*f)(void *content, void *arg)
+);
+
+size_t				set_length(t_set *set);
 
 #endif
