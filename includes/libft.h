@@ -18,7 +18,7 @@
 # include <string.h>
 # define LONG_LIMIT 0x7FFFFFFFFFFFFFFF
 # define CHARACTER_TABLE_SIZE 256
-# define MAX(a, b) ((a) > (b)) ? (a) : (b)
+# define MAX(a, b) (((a) > (b)) ? (a) : (b))
 # define ABS(N) ((N < 0) ? -(N) : (N))
 # define KRED "\x1B[31m"
 # define KGRN "\x1B[32m"
@@ -171,6 +171,8 @@ int					ft_ishexdigit(int c);
 size_t				ft_lstlen(t_list *lst);
 
 int					ft_iswhitespace(char ch);
+
+void				ft_swap(void *p1, void *p2, size_t size);
 
 void				put_color_str(const char *color, const char *s);
 

@@ -104,6 +104,7 @@ SRCS = get_next_line.c\
 	ft_ishexdigit.c\
 	ft_lstlen.c\
 	ft_iswhitespace.c\
+	ft_swap.c\
 	put_color_str.c\
 	ft_lstiter_with_arg.c\
 	get_file_content.c
