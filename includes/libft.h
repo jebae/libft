@@ -93,6 +93,8 @@ int					ft_isdigit(int c);
 
 int					ft_atoi(const char *str);
 
+double				ft_atof(const char *str);
+
 int					ft_isalpha(int c);
 
 int					ft_isalnum(int c);

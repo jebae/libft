@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-static int	is_whitespace(const char ch)
-{
-	return (ch == ' ' || (ch >= '\t' && ch <= '\r'));
-}
-
 int			ft_atoi(const char *str)
 {
 	unsigned long		res;
@@ -24,7 +19,7 @@ int			ft_atoi(const char *str)
 
 	res = 0;
 	neg = 0;
-	while (*str != '\0' && is_whitespace(*str))
+	while (*str != '\0' && ft_iswhitespace(*str))
 		str++;
 	if (*str == '+')
 		str++;

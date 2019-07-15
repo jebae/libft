@@ -57,6 +57,7 @@ SRCS = get_next_line.c\
 	ft_strncmp.c\
 	ft_isdigit.c\
 	ft_atoi.c\
+	ft_atof.c\
 	ft_isalpha.c\
 	ft_isalnum.c\
 	ft_isascii.c\
