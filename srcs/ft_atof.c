@@ -1,8 +1,8 @@
 #include "libft.h"
 
-float			get_divider(const char *str, float *res)
+double			get_divider(const char *str, double *res)
 {
-	float		divider;
+	double		divider;
 
 	divider = 1.0;
 	while (ft_isdigit(*str))
