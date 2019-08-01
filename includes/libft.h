@@ -6,14 +6,12 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/06/18 18:14:49 by jebae            ###   ########.fr       */
+/*   Updated: 2019/08/01 16:57:28 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-#include <stdio.h>
 
 # include <unistd.h>
 # include <stdlib.h>
