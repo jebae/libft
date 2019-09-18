@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/08/01 16:57:28 by jebae            ###   ########.fr       */
+/*   Updated: 2019/09/17 18:02:00 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,5 +302,9 @@ void				set_foreach_with_arg(
 );
 
 size_t				set_length(t_set *set);
+
+long long			ft_powd(long long num, size_t e);
+
+unsigned long long	ft_powud(unsigned long long num, size_t e);
 
 #endif

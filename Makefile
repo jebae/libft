@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/06/18 18:33:56 by jebae            ###   ########.fr        #
+#    Updated: 2019/09/17 18:05:12 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,6 +130,7 @@ SRCS = get_next_line.c\
 	set_foreach.c\
 	set_foreach_with_arg.c\
 	set_length.c\
+	ft_pow.c\
 
 # objs
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
