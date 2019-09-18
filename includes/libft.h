@@ -62,7 +62,8 @@ typedef struct		s_set
 
 typedef struct		s_bigint
 {
-	int				length;
+	unsigned int	length;
+	unsigned int	size;
 	char			*digit;
 }					t_bigint;
 
