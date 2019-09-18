@@ -17,7 +17,7 @@ static void			make_bc_table(size_t *table, const char *pat, size_t len)
 	size_t		i;
 
 	i = 0;
-	while (i < CHARACTER_TABLE_SIZE)
+	while (i < FT_CHARACTER_TABLE_SIZE)
 		table[i++] = len;
 	i = 0;
 	while (i < len)
@@ -96,7 +96,7 @@ static char			*search(const char *text, const char *pat,\
 char				*ft_boyer_moore(const char *text, const char *pat)
 {
 	size_t		pat_len;
-	size_t		bc_table[CHARACTER_TABLE_SIZE];
+	size_t		bc_table[FT_CHARACTER_TABLE_SIZE];
 	size_t		*shift_table;
 	char		*loc;
 
