@@ -33,8 +33,8 @@ int			ft_atoi(const char *str)
 		res = res * 10 + (*str - '0');
 		str++;
 	}
-	if (res / 10 > LONG_LIMIT / 10 ||
-		(res / 10 == LONG_LIMIT / 10 && res % 10 > LONG_LIMIT % 10))
+	if (res / 10 > FT_LONG_LIMIT / 10 ||
+		(res / 10 == FT_LONG_LIMIT / 10 && res % 10 > FT_LONG_LIMIT % 10))
 		return (neg ? 0 : -1);
 	return ((int)res * (neg ? neg : 1));
 }

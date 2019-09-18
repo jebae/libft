@@ -16,10 +16,19 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# define LONG_LIMIT 0x7FFFFFFFFFFFFFFF
-# define CHARACTER_TABLE_SIZE 256
+
+# define FT_SUCCESS					1
+# define FT_FAIL					2
+# define FT_LONG_LIMIT				0x7FFFFFFFFFFFFFFF
+# define FT_CHARACTER_TABLE_SIZE	256
+# define FT_BIGINT_MEM_SIZE			8
+
 # define MAX(a, b) (((a) > (b)) ? (a) : (b))
 # define ABS(N) ((N < 0) ? -(N) : (N))
+
+/*
+** std output color
+*/
 # define KRED "\x1B[31m"
 # define KGRN "\x1B[32m"
 # define KYEL "\x1B[33m"
@@ -50,6 +59,12 @@ typedef struct		s_set
 	t_btree			*tree;
 	int				(*cmpf)(void *, void *);
 }					t_set;
+
+typedef struct		s_bigint
+{
+	int				length;
+	char			*digit;
+}					t_bigint;
 
 void				*ft_memset(void *b, int c, size_t len);
 
