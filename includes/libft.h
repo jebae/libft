@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/09/18 15:55:21 by jebae            ###   ########.fr       */
+/*   Updated: 2019/09/23 14:59:20 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,6 @@ typedef struct		s_set
 	t_btree			*tree;
 	int				(*cmpf)(void *, void *);
 }					t_set;
-
-typedef struct		s_bigint
-{
-	unsigned int	length;
-	unsigned int	size;
-	char			*digit;
-}					t_bigint;
 
 /*
 ** memory
@@ -263,14 +256,5 @@ size_t				set_length(t_set *set);
 */
 long long			ft_powd(long long num, size_t e);
 unsigned long long	ft_powud(unsigned long long num, size_t e);
-
-/*
-** bigint
-*/
-int					new_bigint(t_bigint *b);
-void				init_bigint(t_bigint *b);
-int					expand_bigint(t_bigint *b);
-int					bi_push_digit(t_bigint *b, char value);
-int					bi_plus_bi(t_bigint *b1, t_bigint *b2, t_bigint *res);
 
 #endif
