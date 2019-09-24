@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/09/18 15:56:13 by jebae            ###   ########.fr        #
+#    Updated: 2019/09/24 14:10:55 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,9 +149,6 @@ SRC_MATH = ft_pow.c\
 
 SRC_GNL = get_next_line.c\
 
-SRC_BIGINT = bigint.c\
-	bi_plus_bi.c\
-
 # objs
 OBJS = $(addprefix $(OBJDIR)/, $(SRC_MEMORY:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_STRING:.c=.o))
@@ -163,7 +160,6 @@ OBJS += $(addprefix $(OBJDIR)/, $(SRC_BTREE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_SET:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_MATH:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
-OBJS += $(addprefix $(OBJDIR)/, $(SRC_BIGINT:.c=.o))
 
 # compile objs
 HEADERS = $(INCDIR)/libft.h\
@@ -188,8 +184,6 @@ $(OBJDIR)/%.o : $(SRCDIR)/set/%.c $(HEADERS)
 $(OBJDIR)/%.o : $(SRCDIR)/math/%.c $(HEADERS)
 	@$(call compile_obj,$<,$@)
 $(OBJDIR)/%.o : $(SRCDIR)/get_next_line/%.c $(HEADERS)
-	@$(call compile_obj,$<,$@)
-$(OBJDIR)/%.o : $(SRCDIR)/bigint/%.c $(HEADERS)
 	@$(call compile_obj,$<,$@)
 
 # build
