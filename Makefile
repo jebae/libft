@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/06/18 18:33:56 by jebae            ###   ########.fr        #
+#    Updated: 2019/09/18 15:56:13 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,12 @@ KGRN=\033[0;32m
 KYEL=\033[0;33m
 KNRM=\033[0m
 COUNTER = 0
+
+define compile_obj
+	@printf "$(KGRN)[libft]$(KNRM) compile $(1)\n"
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $(1) -o $(2)
+	$(eval COUNTER=$(shell echo $$(($(COUNTER) + 1))))
+endef
 
 # compiler
 CC = gcc
@@ -35,16 +41,21 @@ CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I ./$(INCDIR)
 
+LIBS = -L . -lft
+
 # srcs
-SRCS = get_next_line.c\
-	ft_memset.c\
+SRC_MEMORY = ft_memset.c\
 	ft_bzero.c\
 	ft_memcpy.c\
 	ft_memccpy.c\
 	ft_memmove.c\
 	ft_memchr.c\
 	ft_memcmp.c\
-	ft_strlen.c\
+	ft_swap.c\
+	ft_memalloc.c\
+	ft_memdel.c\
+
+SRC_STRING = ft_strlen.c\
 	ft_strdup.c\
 	ft_strcpy.c\
 	ft_strncpy.c\
@@ -64,8 +75,6 @@ SRCS = get_next_line.c\
 	ft_isprint.c\
 	ft_toupper.c\
 	ft_tolower.c\
-	ft_memalloc.c\
-	ft_memdel.c\
 	ft_strnew.c\
 	ft_strdel.c\
 	ft_strclr.c\
@@ -80,7 +89,14 @@ SRCS = get_next_line.c\
 	ft_strtrim.c\
 	ft_strsplit.c\
 	ft_itoa.c\
-	ft_putchar.c\
+	ft_boyer_moore.c\
+	ft_strstr.c\
+	ft_strnstr.c\
+	ft_hexatoi.c\
+	ft_ishexdigit.c\
+	ft_iswhitespace.c\
+
+SRC_IO = ft_putchar.c\
 	ft_putchar_fd.c\
 	ft_putstr.c\
 	ft_putendl.c\
@@ -88,7 +104,9 @@ SRCS = get_next_line.c\
 	ft_putstr_fd.c\
 	ft_putendl_fd.c\
 	ft_putnbr_fd.c\
-	ft_lstnew.c\
+	put_color_str.c\
+
+SRC_LST = ft_lstnew.c\
 	ft_lstdelone.c\
 	ft_lstdel.c\
 	ft_lstadd.c\
@@ -96,23 +114,18 @@ SRCS = get_next_line.c\
 	ft_lstmap.c\
 	ft_lstsort.c\
 	ft_lstrev.c\
-	ft_strstr.c\
-	ft_boyer_moore.c\
-	ft_strnstr.c\
 	ft_sorted_lstadd.c\
 	ft_sorted_lstpop.c\
-	ft_hexatoi.c\
-	ft_ishexdigit.c\
 	ft_lstlen.c\
-	ft_iswhitespace.c\
-	ft_swap.c\
-	put_color_str.c\
 	ft_lstiter_with_arg.c\
-	get_file_content.c\
-	queue_init.c\
+
+SRC_FILE = get_file_content.c\
+
+SRC_QUEUE = queue_init.c\
 	queue_push.c\
 	queue_pop.c\
-	btree_create_node.c\
+
+SRC_BTREE = btree_create_node.c\
 	btree_insert_data.c\
 	btree_bfs.c\
 	btree_apply_inorder.c\
@@ -123,7 +136,8 @@ SRCS = get_next_line.c\
 	btree_remove_if.c\
 	btree_foreach.c\
 	btree_foreach_with_arg.c\
-	set_init.c\
+
+SRC_SET = set_init.c\
 	set_add.c\
 	set_remove_if.c\
 	set_del.c\
@@ -131,14 +145,52 @@ SRCS = get_next_line.c\
 	set_foreach_with_arg.c\
 	set_length.c\
 
+SRC_MATH = ft_pow.c\
+
+SRC_GNL = get_next_line.c\
+
+SRC_BIGINT = bigint.c\
+	bi_plus_bi.c\
+
 # objs
-OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
+OBJS = $(addprefix $(OBJDIR)/, $(SRC_MEMORY:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_STRING:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_IO:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_LST:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_FILE:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_QUEUE:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_BTREE:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_SET:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_MATH:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_BIGINT:.c=.o))
 
 # compile objs
-$(OBJDIR)/%.o : $(SRCDIR)/%.c $(INCDIR)/libft.h $(INCDIR)/get_next_line.h
-	@printf "$(KGRN)[libft]$(KNRM) compile $<\n"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	$(eval COUNTER=$(shell echo $$(($(COUNTER) + 1))))
+HEADERS = $(INCDIR)/libft.h\
+	$(INCDIR)/get_next_line.h\
+
+$(OBJDIR)/%.o : $(SRCDIR)/memory/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/string/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/io/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/linked_list/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/file/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/queue/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/binary_tree/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/set/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/math/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/get_next_line/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o : $(SRCDIR)/bigint/%.c $(HEADERS)
+	@$(call compile_obj,$<,$@)
 
 # build
 all : $(NAME)
@@ -157,6 +209,9 @@ $(OBJDIR) :
 	@mkdir -p $(OBJDIR)
 
 # commands
+test : all
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) $(SRCDIR)/__tests__/*.c $(SRCDIR)/__tests__/*/*.c test_main.c -o test
+
 clean :
 	@rm -rf $(OBJS)
 

@@ -6,3 +6,4 @@ dumbmain.c
 *.a
 *.out
 *.dSYM
+.DS_Store
