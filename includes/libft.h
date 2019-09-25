@@ -73,6 +73,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				ft_swap(void *p1, void *p2, size_t size);
+void				ft_memnegate(unsigned char *mem, size_t size);
 
 /*
 ** string

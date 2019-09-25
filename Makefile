@@ -54,6 +54,7 @@ SRC_MEMORY = ft_memset.c\
 	ft_swap.c\
 	ft_memalloc.c\
 	ft_memdel.c\
+	ft_memnegate.c\
 
 SRC_STRING = ft_strlen.c\
 	ft_strdup.c\
@@ -204,7 +205,7 @@ $(OBJDIR) :
 
 # commands
 test : all
-	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) $(SRCDIR)/__tests__/*.c $(SRCDIR)/__tests__/*/*.c test_main.c -o test
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) $(SRCDIR)/__tests__/*.c test_main.c -o test
 
 clean :
 	@rm -rf $(OBJS)
