@@ -5,5 +5,11 @@ int		main(void)
 	// ft_memnegate
 	test_memnegate_case1();
 	test_memnegate_case2();
-	return (0);
+
+	// ft_bit_reverse
+	test_bit_reverse_case1();
+	test_bit_reverse_case2();
+	test_bit_reverse_case3();
+	test_bit_reverse_case4();
+	test_bit_reverse_case5();
 }

@@ -2,6 +2,7 @@
 
 void		test_memnegate_case1(void)
 {
+	printf(KYEL "test_memnegate_case1\n" KNRM);
 	unsigned char	*mem;
 
 	mem = ft_memalloc(2);
@@ -24,6 +25,7 @@ void		test_memnegate_case1(void)
 
 void		test_memnegate_case2(void)
 {
+	printf(KYEL "test_memnegate_case2\n" KNRM);
 	unsigned char	*mem;
 
 	mem = ft_memalloc(2);

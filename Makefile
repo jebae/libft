@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/09/24 14:10:55 by jebae            ###   ########.fr        #
+#    Updated: 2019/09/30 18:39:35 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,6 +147,7 @@ SRC_SET = set_init.c\
 	set_length.c\
 
 SRC_MATH = ft_pow.c\
+	ft_bit_reverse.c\
 
 SRC_GNL = get_next_line.c\
 
