@@ -79,3 +79,19 @@ void		test_bit_reverse_case5(void)
 		"ft_bit_reverse (0xb1a2, 11) : return value"
 	);
 }
+
+void		test_bit_reverse_case6(void)
+{
+	printf(KYEL "test_bit_reverse_case6\n" KNRM);
+	size_t		i;
+	size_t		num_bits = 11;
+	size_t		res;
+
+	i = 0xb1a2;
+	res = ft_bit_reverse(i, num_bits);
+
+	test(
+		res == 0xb22c,
+		"ft_bit_reverse (0xb1a2, 11) : return value"
+	);
+}
