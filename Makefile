@@ -148,6 +148,7 @@ SRC_SET = set_init.c\
 
 SRC_MATH = ft_pow.c\
 	ft_bit_reverse.c\
+	ft_int_log2.c\
 
 SRC_GNL = get_next_line.c\
 

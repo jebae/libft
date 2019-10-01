@@ -12,4 +12,9 @@ int		main(void)
 	test_bit_reverse_case3();
 	test_bit_reverse_case4();
 	test_bit_reverse_case5();
+
+	// ft_int_log2
+	test_int_log2_case1();
+	test_int_log2_case2();
+	test_int_log2_case3();
 }
