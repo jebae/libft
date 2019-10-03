@@ -17,10 +17,7 @@ void		ft_memnegate(unsigned char *mem, size_t size)
 	while (i < size)
 	{
 		added = (unsigned short)(mem[i]) + carry;
-		if (added > 0xff)
-			carry = 0x01;
-		else
-			carry = 0x00;
+		carry = added >> 8;
 		mem[i] = (unsigned char)added;
 		i++;
 	}
