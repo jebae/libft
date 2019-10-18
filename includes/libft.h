@@ -260,5 +260,12 @@ long long			ft_powd(long long num, size_t e);
 unsigned long long	ft_powud(unsigned long long num, size_t e);
 size_t				ft_bit_reverse(size_t x, size_t num_bits);
 unsigned int		ft_int_log2(size_t num);
+void				ft_extract_double(
+	double num,
+	short *exponent,
+	unsigned long long *mantissa
+);
+int					ft_is_inf(double num);
+int					ft_is_nan(double num);
 
 #endif

@@ -2,6 +2,7 @@
 # define LIBFT_TEST_H
 
 # include <stdio.h>
+# include <math.h>
 # include "libft.h"
 
 /*
@@ -30,5 +31,18 @@ void	test_bit_reverse_case5(void);
 void	test_int_log2_case1(void);
 void	test_int_log2_case2(void);
 void	test_int_log2_case3(void);
+
+/*
+** ft_is_inf
+*/
+void	test_is_inf_case1(void);
+void	test_is_inf_case2(void);
+void	test_is_inf_case3(void);
+
+/*
+** ft_is_nan
+*/
+void	test_is_nan_case1(void);
+void	test_is_nan_case2(void);
 
 #endif

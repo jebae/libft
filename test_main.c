@@ -17,4 +17,13 @@ int		main(void)
 	test_int_log2_case1();
 	test_int_log2_case2();
 	test_int_log2_case3();
+
+	// ft_is_inf
+	test_is_inf_case1();
+	test_is_inf_case2();
+	test_is_inf_case3();
+
+	// ft_is_nan
+	test_is_nan_case1();
+	test_is_nan_case2();
 }
