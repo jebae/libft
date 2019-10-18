@@ -25,9 +25,11 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	else
 	{
 		buf = (unsigned char *)ft_memalloc(sizeof(unsigned char) * len);
+		if (buf == NULL)
+			return (dst);
 		ft_memcpy(buf, src, len);
 		ft_memcpy(dst, buf, len);
-		free(buf);
+		ft_memdel((void **)&buf);
 	}
 	return (dst);
 }
