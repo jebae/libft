@@ -26,4 +26,16 @@ int		main(void)
 	// ft_is_nan
 	test_is_nan_case1();
 	test_is_nan_case2();
+
+	// ft_extract_ldouble
+	test_extract_ldouble_case1();
+	test_extract_ldouble_case2();
+
+	// ft_is_inf_l
+	test_is_inf_l_case1();
+	test_is_inf_l_case2();
+
+	// ft_is_nan_l
+	test_is_nan_l_case1();
+	test_is_nan_l_case2();
 }

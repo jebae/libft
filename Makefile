@@ -152,6 +152,9 @@ SRC_MATH = ft_pow.c\
 	ft_extract_double.c\
 	ft_is_inf.c\
 	ft_is_nan.c\
+	ft_extract_ldouble.c\
+	ft_is_inf_l.c\
+	ft_is_nan_l.c\
 
 SRC_GNL = get_next_line.c\
 

@@ -45,4 +45,22 @@ void	test_is_inf_case3(void);
 void	test_is_nan_case1(void);
 void	test_is_nan_case2(void);
 
+/*
+** ft_extract_ldouble
+*/
+void	test_extract_ldouble_case1(void);
+void	test_extract_ldouble_case2(void);
+
+/*
+** ft_is_inf_l
+*/
+void	test_is_inf_l_case1(void);
+void	test_is_inf_l_case2(void);
+
+/*
+** ft_is_nan
+*/
+void	test_is_nan_l_case1(void);
+void	test_is_nan_l_case2(void);
+
 #endif

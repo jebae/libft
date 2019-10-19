@@ -267,5 +267,12 @@ void				ft_extract_double(
 );
 int					ft_is_inf(double num);
 int					ft_is_nan(double num);
+void				ft_extract_ldouble(
+	long double num,
+	short *exponent,
+	unsigned long long *mantissa
+);
+int					ft_is_inf_l(long double num);
+int					ft_is_nan_l(long double num);;
 
 #endif
