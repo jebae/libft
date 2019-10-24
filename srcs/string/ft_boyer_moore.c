@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:58:15 by jebae             #+#    #+#             */
-/*   Updated: 2019/04/11 14:29:31 by jebae            ###   ########.fr       */
+/*   Updated: 2019/10/24 14:23:56 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ static void			make_bc_table(size_t *table, const char *pat, size_t len)
 	}
 }
 
-static void			make_gs_table(size_t *shift_table,\
-		const char *pat, size_t len)
+static void			make_gs_table(
+	size_t *shift_table,
+	const char *pat,
+	size_t len
+)
 {
 	size_t		pos_table[len];
 	size_t		i;
@@ -57,15 +60,23 @@ static void			make_gs_table(size_t *shift_table,\
 	}
 }
 
-static void			preprocess(size_t *bc_table, size_t *shift_table,\
-		const char *pat, size_t len)
+static void			preprocess(
+	size_t *bc_table,
+	size_t *shift_table,
+	const char *pat,
+	size_t len
+)
 {
 	make_bc_table(bc_table, pat, len);
 	make_gs_table(shift_table, pat, len);
 }
 
-static char			*search(const char *text, const char *pat,\
-		size_t *bc_table, size_t *shift_table)
+static char			*search(
+	const char *text,
+	const char *pat,
+	size_t *bc_table,
+	size_t *shift_table
+)
 {
 	size_t		i;
 	size_t		j;
@@ -85,10 +96,10 @@ static char			*search(const char *text, const char *pat,\
 		if (j == 0)
 			return ((char *)text + i);
 		if (bc_table[(size_t)(text[i + j])] != pat_len)
-			i += MAX(shift_table[j],\
-					j - bc_table[(size_t)(text[i + j])]);
+			i += (shift_table[j] > j - bc_table[(size_t)(text[i + j])])
+				? shift_table[j] : j - bc_table[(size_t)(text[i + j])];
 		else
-			i += MAX(shift_table[j], j);
+			i += (j > shift_table[j]) ? j : shift_table[j];
 	}
 	return (NULL);
 }
@@ -107,6 +118,6 @@ char				*ft_boyer_moore(const char *text, const char *pat)
 		return (NULL);
 	preprocess(bc_table, shift_table, pat, pat_len);
 	loc = search(text, pat, bc_table, shift_table);
-	free(shift_table);
+	ft_memdel((void **)&shift_table);
 	return (loc);
 }

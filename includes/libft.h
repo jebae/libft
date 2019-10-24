@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/10/14 19:59:03 by jebae            ###   ########.fr       */
+/*   Updated: 2019/10/24 14:25:28 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,10 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define FT_SUCCESS					1
-# define FT_FAIL					2
+# define FT_SUCCESS					0
+# define FT_FAIL					1
 # define FT_LONG_LIMIT				0x7FFFFFFFFFFFFFFF
 # define FT_CHARACTER_TABLE_SIZE	256
-# define FT_BIGINT_MEM_SIZE			8
-
-# define MAX(a, b) (((a) > (b)) ? (a) : (b))
-# define MIN(a, b) (((a) > (b)) ? (b) : (a))
-# define ABS(N) ((N < 0) ? -(N) : (N))
 
 /*
 ** std output color

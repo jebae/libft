@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 16:12:57 by jebae             #+#    #+#             */
-/*   Updated: 2019/06/18 17:57:01 by jebae            ###   ########.fr       */
+/*   Updated: 2019/10/24 15:16:51 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ t_list		*ft_lstnew(const void *content, size_t content_size)
 {
 	t_list	*list;
 
-	list = (t_list *)ft_memalloc(sizeof(t_list));
-	if (list == NULL)
+	if ((list = (t_list *)ft_memalloc(sizeof(t_list))) == NULL)
 		return (NULL);
 	if (content == NULL)
 	{

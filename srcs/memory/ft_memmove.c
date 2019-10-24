@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:04:52 by jebae             #+#    #+#             */
-/*   Updated: 2019/06/18 18:06:44 by jebae            ###   ########.fr       */
+/*   Updated: 2019/10/24 15:15:05 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*p_dst;
 	unsigned char	*p_src;
 
+	if (dst == NULL || src == NULL)
+		return (dst);
 	p_dst = (unsigned char *)dst;
 	p_src = (unsigned char *)src;
 	if (p_dst + len <= p_src || p_src + len <= p_dst)
