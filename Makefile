@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/09/30 18:39:35 by jebae            ###   ########.fr        #
+#    Updated: 2019/10/24 15:49:51 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,8 @@ SRC_MATH = ft_pow.c\
 	ft_extract_ldouble.c\
 	ft_is_inf_l.c\
 	ft_is_nan_l.c\
+	ft_min_int.c\
+	ft_max_int.c\
 
 SRC_GNL = get_next_line.c\
 

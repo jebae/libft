@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/10/24 14:25:28 by jebae            ###   ########.fr       */
+/*   Updated: 2019/10/24 15:56:35 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,8 @@ void				ft_extract_ldouble(
 	unsigned long long *mantissa
 );
 int					ft_is_inf_l(long double num);
-int					ft_is_nan_l(long double num);;
+int					ft_is_nan_l(long double num);
+long long			ft_max_int(long long a, long long b);
+long long			ft_min_int(long long a, long long b);
 
 #endif
