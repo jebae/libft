@@ -6,7 +6,7 @@
 #    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/10/24 15:49:51 by jebae            ###   ########.fr        #
+#    Updated: 2019/10/25 16:57:03 by jebae            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,8 @@ SRC_STRING = ft_strlen.c\
 	ft_hexatoi.c\
 	ft_ishexdigit.c\
 	ft_iswhitespace.c\
+	ft_to_utf8.c\
+	ft_utf8_byte_len.c\
 
 SRC_IO = ft_putchar.c\
 	ft_putchar_fd.c\

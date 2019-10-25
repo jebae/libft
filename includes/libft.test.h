@@ -63,4 +63,18 @@ void	test_is_inf_l_case2(void);
 void	test_is_nan_l_case1(void);
 void	test_is_nan_l_case2(void);
 
+/*
+** ft_to_utf8
+*/
+void	test_to_utf8_case1(void);
+void	test_to_utf8_case2(void);
+void	test_to_utf8_case3(void);
+
+/*
+** ft_utf8_byte_len
+*/
+void		test_utf8_byte_len_case1(void);
+void		test_utf8_byte_len_case2(void);
+void		test_utf8_byte_len_case3(void);
+
 #endif

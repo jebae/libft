@@ -38,4 +38,14 @@ int		main(void)
 	// ft_is_nan_l
 	test_is_nan_l_case1();
 	test_is_nan_l_case2();
+
+	// ft_to_utf8
+	test_to_utf8_case1();
+	test_to_utf8_case2();
+	test_to_utf8_case3();
+
+	// ft_utf8_byte_len
+	test_utf8_byte_len_case1();
+	test_utf8_byte_len_case2();
+	test_utf8_byte_len_case3();
 }

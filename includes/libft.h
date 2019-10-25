@@ -6,7 +6,7 @@
 /*   By: jebae <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:26:04 by jebae             #+#    #+#             */
-/*   Updated: 2019/10/24 15:56:35 by jebae            ###   ########.fr       */
+/*   Updated: 2019/10/25 16:57:21 by jebae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ char				*ft_strnstr(
 int					ft_hexatoi(const char *str);
 int					ft_ishexdigit(int c);
 int					ft_iswhitespace(char ch);
+void				ft_to_utf8(wchar_t wch, char *utf8);
+int					ft_utf8_byte_len(char *utf8);
 
 /*
 ** io
