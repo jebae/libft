@@ -38,3 +38,30 @@ int			ft_atoi(const char *str)
 		return (neg ? 0 : -1);
 	return ((int)res * (neg ? neg : 1));
 }
+
+long		ft_atol(const char *str)
+{
+	unsigned long		res;
+	char				neg;
+
+	res = 0;
+	neg = 0;
+	while (*str != '\0' && ft_iswhitespace(*str))
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
+	{
+		neg = -1;
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	if (res / 10 > FT_LONG_LIMIT / 10 ||
+		(res / 10 == FT_LONG_LIMIT / 10 && res % 10 > FT_LONG_LIMIT % 10))
+		return (neg ? 0 : -1);
+	return ((long)res * (neg ? neg : 1));
+}

@@ -12,69 +12,66 @@
 
 #include "get_next_line.h"
 
-int			preprocess(const int fd, char **line)
+static int	safe_return(char **line, int *cur, int *r, int res)
 {
-	if (fd < 0 || line == NULL || BUFF_SIZE <= 0)
-		return (PREPROCESS_FAIL);
-	*line = ft_strnew(0);
-	if (*line == NULL)
-		return (PREPROCESS_FAIL);
-	return (PREPROCESS_SUCCESS);
-}
-
-int			handle_error(char **line)
-{
-	if (**line == '\0')
+	if (*line != NULL)
 		ft_memdel((void **)line);
-	return (GNL_ERROR);
+	*cur = BUFF_SIZE;
+	*r = BUFF_SIZE;
+	return (res);
 }
 
-int			write_line(t_bucket *bucket, char **line)
+static int	copy_buf(char *buf, int offset, int end, char **line)
 {
-	char		*buf;
-	char		*tmp_line;
-	size_t		i;
+	int		cur;
+	char	*temp;
 
-	i = 0;
-	buf = bucket->buf + bucket->loc;
-	while (bucket->loc + i < BUFF_SIZE && buf[i] != '\n')
-		i++;
-	tmp_line = *line;
-	buf[i] = '\0';
-	*line = ft_strjoin(*line, buf);
-	ft_memdel((void **)&tmp_line);
+	if (offset >= end)
+		return (end);
+	cur = offset;
+	while (cur < end && buf[cur] != '\n')
+		cur++;
+	buf[cur] = '\0';
 	if (*line == NULL)
-		return (WRITE_LINE_FAIL);
-	bucket->loc += i + 1;
-	if (bucket->loc <= BUFF_SIZE)
-		return (WRITE_LINE_SUCCESS);
-	ft_bzero((void *)bucket->buf, BUFF_SIZE + 1);
-	bucket->loc = 0;
-	return (WRITE_LINE_SUCCESS);
+	{
+		if ((*line = ft_strnew(cur - offset)) == NULL)
+			return (-1);
+		ft_strncpy(*line, buf + offset, cur - offset);
+	}
+	else
+	{
+		temp = *line;
+		if ((*line = ft_strjoin(*line, buf + offset)) == NULL)
+			return (-1);
+		ft_memdel((void **)&temp);
+	}
+	return (cur);
 }
 
 int			get_next_line(const int fd, char **line)
 {
-	static t_bucket		bucket;
-	int					ret;
+	static char		buf[OPEN_MAX][BUFF_SIZE + 1];
+	static int		cur[OPEN_MAX] = {BUFF_SIZE, };
+	static int		r[OPEN_MAX] = {BUFF_SIZE, };
 
-	if (preprocess(fd, line) == PREPROCESS_FAIL)
-		return (GNL_ERROR);
-	if (bucket.loc != 0 && write_line(&bucket, line) == WRITE_LINE_FAIL)
-		return (handle_error(line));
-	while (bucket.loc == 0)
+	if (line == NULL || fd < 0)
+		return (-1);
+	*line = NULL;
+	if ((cur[fd] = copy_buf(buf[fd], cur[fd], r[fd], line)) == -1)
+		return (safe_return(line, &cur[fd], &r[fd], -1));
+	while (cur[fd] == r[fd])
 	{
-		if ((ret = read(fd, bucket.buf, BUFF_SIZE)) == -1)
-			return (handle_error(line));
-		if (ret == 0)
-		{
-			if (**line != '\0')
-				return (GNL_LINE_READ);
-			ft_memdel((void **)line);
-			return (GNL_READ_COMPLETE);
-		}
-		if (write_line(&bucket, line) == WRITE_LINE_FAIL)
-			return (handle_error(line));
+		r[fd] = read(fd, &buf[fd], BUFF_SIZE);
+		if (r[fd] == -1)
+			return (safe_return(line, &cur[fd], &r[fd], -1));
+		else if (r[fd] == 0 && *line == NULL)
+			return (safe_return(line, &cur[fd], &r[fd], 0));
+		else if (r[fd] == 0)
+			return (1);
+		cur[fd] = 0;
+		if ((cur[fd] = copy_buf(buf[fd], cur[fd], r[fd], line)) == -1)
+			return (safe_return(line, &cur[fd], &r[fd], -1));
 	}
-	return (GNL_LINE_READ);
+	cur[fd]++;
+	return (1);
 }
