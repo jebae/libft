@@ -68,7 +68,6 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
-void				ft_swap(void *p1, void *p2, size_t size);
 void				ft_memnegate(unsigned char *mem, size_t size);
 
 /*
@@ -139,117 +138,9 @@ void				ft_putnbr_fd(int n, int fd);
 void				put_color_str(const char *color, const char *s);
 
 /*
-** linked list
-*/
-t_list				*ft_lstnew(const void *content, size_t content_size);
-void				ft_lstdelone(
-	t_list **alst,
-	void (*del)(void *content, size_t content_size)
-);
-void				ft_lstdel(
-	t_list **alst,
-	void (*del)(void *content, size_t content_size)
-);
-void				ft_lstadd(t_list **alst, t_list *n);
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void				ft_sorted_lstadd(
-	t_list **alst,
-	t_list *n,
-	int (*compare)(t_list *, t_list *)
-);
-t_list				*ft_sorted_lstpop(t_list **alst);
-void				ft_lstsort(
-	t_list **alst,
-	int (*compare)(t_list *, t_list *)
-);
-void				ft_lstrev(t_list **alst);
-size_t				ft_lstlen(t_list *lst);
-void				ft_lstiter_with_arg(
-	t_list *lst,
-	void (*f)(t_list *elem, void *arg),
-	void *arg
-);
-
-/*
 ** file
 */
 char				*get_file_content(int fd);
-
-/*
-** queue
-*/
-t_queue				queue_init(void);
-void				queue_push(
-	t_queue *queue,
-	void *content,
-	size_t content_size
-);
-void				*queue_pop(t_queue *queue);
-
-/*
-** binary tree
-*/
-t_btree				*btree_create_node(void *content, size_t content_size);
-void				btree_insert_data(
-	t_btree **root,
-	void *content,
-	size_t content_size,
-	int (*cmpf)(void *, void *)
-);
-void				btree_bfs(t_btree *root, void (*f)(void *content));
-void				btree_apply_inorder(
-	t_btree *root,
-	void (*applyf)(void *)
-);
-void				btree_apply_postorder(
-	t_btree *root,
-	void (*applyf)(void *)
-);
-void				btree_delone(t_btree **node, void (*del)(void *content));
-void				btree_del(t_btree **root, void (*del)(void *content));
-void				*btree_search_one(
-	t_btree *root,
-	void *p_data,
-	int (*cmpf)(void *, void *)
-);
-void				btree_remove_if(
-	t_btree **root,
-	void *p_data,
-	int (*cmpf)(void *, void *)
-);
-void				btree_foreach(
-	t_btree *root,
-	void (*f)(void *content)
-);
-void				btree_foreach_with_arg(
-	t_btree *root,
-	void *arg,
-	void (*f)(void *content, void *arg)
-);
-
-/*
-** set
-*/
-t_set				set_init(int (*cmpf)(void *, void *));
-void				set_add(
-	t_set *set,
-	void *content,
-	size_t content_size
-);
-void				set_remove_if(
-	t_set *set,
-	void *p_data,
-	int (*cmpf)(void *, void *)
-);
-void				set_del(t_set *set);
-void				set_foreach(t_set *set, void (*f)(void *content));
-void				set_foreach_with_arg(
-	t_set *set,
-	void *arg,
-	void (*f)(void *content, void *arg)
-);
-size_t				set_length(t_set *set);
 
 /*
 ** math
