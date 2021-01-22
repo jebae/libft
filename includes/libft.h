@@ -30,32 +30,6 @@
 # define KYEL "\x1B[33m"
 # define KNRM "\x1B[0m"
 
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
-
-typedef struct		s_queue
-{
-	t_list			*front;
-	t_list			*rear;
-}					t_queue;
-
-typedef struct		s_btree
-{
-	struct s_btree	*left;
-	struct s_btree	*right;
-	void			*content;
-}					t_btree;
-
-typedef struct		s_set
-{
-	t_btree			*tree;
-	int				(*cmpf)(void *, void *);
-}					t_set;
-
 /*
 ** memory
 */
