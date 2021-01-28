@@ -113,7 +113,7 @@ char				*ft_boyer_moore(const char *text, const char *pat)
 
 	loc = NULL;
 	pat_len = ft_strlen(pat);
-	shift_table = ft_memalloc(sizeof(size_t) * (pat_len + 1));
+	shift_table = (size_t *)ft_memalloc(sizeof(size_t) * (pat_len + 1));
 	if (shift_table == NULL)
 		return (NULL);
 	preprocess(bc_table, shift_table, pat, pat_len);

@@ -1,42 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jebae <marvin@42.fr>                       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/06/18 18:09:31 by jebae             #+#    #+#              #
-#    Updated: 2019/10/28 16:54:10 by jebae            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# utils
-KRED=\033[0;31m
-KGRN=\033[0;32m
-KYEL=\033[0;33m
-KNRM=\033[0m
-COUNTER = 0
-
-define compile_obj
-	@printf "$(KGRN)[libft]$(KNRM) compile $(1)\n"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $(1) -o $(2)
-	$(eval COUNTER=$(shell echo $$(($(COUNTER) + 1))))
-endef
-
-# compiler
-CC = gcc
-
-# lib name
 NAME = libft.a
 
 # path
-SRCDIR = srcs
+SRCDIR = ./srcs
 
-OBJDIR = objs
+OBJDIR = ./objs
 
-INCDIR = includes
+INCDIR = ./includes
 
-# compiler options
+# compiler
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I ./$(INCDIR)
@@ -107,8 +79,7 @@ SRC_IO = ft_putchar.c\
 	ft_putendl_fd.c\
 	ft_putnbr_fd.c\
 	put_color_str.c\
-
-SRC_FILE = get_file_content.c\
+	get_file_content.c\
 
 SRC_MATH = ft_pow.c\
 	ft_bit_reverse.c\
@@ -122,60 +93,67 @@ SRC_MATH = ft_pow.c\
 	ft_min_int.c\
 	ft_max_int.c\
 
+SRC_DATETIME = get_datetime.c\
+			   timedelta.c\
+
 SRC_GNL = get_next_line.c\
 
 # objs
 OBJS = $(addprefix $(OBJDIR)/, $(SRC_MEMORY:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_STRING:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_IO:.c=.o))
-OBJS += $(addprefix $(OBJDIR)/, $(SRC_FILE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_MATH:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_DATETIME:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
 
 # compile objs
 HEADERS = $(INCDIR)/libft.h\
 	$(INCDIR)/get_next_line.h\
 
-$(OBJDIR)/%.o : $(SRCDIR)/memory/%.c $(HEADERS)
-	@$(call compile_obj,$<,$@)
-$(OBJDIR)/%.o : $(SRCDIR)/string/%.c $(HEADERS)
-	@$(call compile_obj,$<,$@)
-$(OBJDIR)/%.o : $(SRCDIR)/io/%.c $(HEADERS)
-	@$(call compile_obj,$<,$@)
-$(OBJDIR)/%.o : $(SRCDIR)/file/%.c $(HEADERS)
-	@$(call compile_obj,$<,$@)
-$(OBJDIR)/%.o : $(SRCDIR)/math/%.c $(HEADERS)
-	@$(call compile_obj,$<,$@)
-$(OBJDIR)/%.o : $(SRCDIR)/get_next_line/%.c $(HEADERS)
-	@$(call compile_obj,$<,$@)
+$(OBJDIR)/%.o: $(SRCDIR)/memory/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/string/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/io/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/math/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/datetime/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/get_next_line/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # build
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : pre_build $(OBJDIR) $(OBJS) post_build
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
+$(NAME): $(OBJDIR) $(OBJS)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
-pre_build :
-	@printf "$(KGRN)[libft] $(KYEL)build $(NAME)\n$(KNRM)"
-
-post_build :
-	@printf "$(KGRN)[libft] $(KYEL)$(COUNTER) files compiled\n$(KNRM)"
-
-$(OBJDIR) :
-	@mkdir -p $(OBJDIR)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 # commands
-test : all
-	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) $(SRCDIR)/__tests__/*.c test_main.c -o test
+test: $(SRCDIR)/**/*.c $(SRCDIR)/**/*.test.cpp $(SRCDIR)/*.test.cpp $(HEADERS)
+	g++\
+		-Wall -Wextra -std=c++11\
+		-lgtest\
+		$(INCLUDES)\
+		$(SRCDIR)/**/*.c $(SRCDIR)/**/*.test.cpp $(SRCDIR)/*.test.cpp\
+		-o test
 
-clean :
-	@rm -rf $(OBJS)
-	@rm -rf $(OBJDIR)
+clean:
+	rm -rf $(OBJS)
+	rm -rf $(OBJDIR)
 
-fclean : clean
-	@rm -rf $(NAME)
+fclean: clean
+	rm -rf $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY : all pre_build post_build clean fclean re
+.PHONY: all pre_build post_build clean fclean re

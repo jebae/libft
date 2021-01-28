@@ -16,9 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <time.h>
 
-# define FT_SUCCESS					0
-# define FT_FAIL					1
 # define FT_LONG_LIMIT				0x7FFFFFFFFFFFFFFF
 # define FT_CHARACTER_TABLE_SIZE	256
 
@@ -29,6 +28,18 @@
 # define KGRN "\x1B[32m"
 # define KYEL "\x1B[33m"
 # define KNRM "\x1B[0m"
+
+typedef struct		s_datetime
+{
+	int	year;
+	int	month;
+	int	day;
+	int	hour;
+	int	minute;
+	int	second;
+}					t_datetime;
+
+typedef				t_datetime t_timedelta;
 
 /*
 ** memory
@@ -139,5 +150,11 @@ int					ft_is_inf_l(long double num);
 int					ft_is_nan_l(long double num);
 long long			ft_max_int(long long a, long long b);
 long long			ft_min_int(long long a, long long b);
+
+/*
+** datetime
+*/
+int					get_datetime(time_t t, t_datetime *dt);
+int					timedelta(time_t t1, time_t t2, t_timedelta *td);
 
 #endif
