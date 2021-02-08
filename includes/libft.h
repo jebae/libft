@@ -93,6 +93,7 @@ int					ft_strequ(const char *s1, const char *s2);
 int					ft_strnequ(const char *s1, const char *s2, size_t n);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
 char				*ft_strjoin(const char *s1, const char *s2);
+char				*strcat_all(size_t n, ...);
 char				*ft_strtrim(const char *s);
 char				**ft_strsplit(const char *s, char c);
 char				*ft_itoa(int n);
@@ -125,7 +126,7 @@ void				put_color_str(const char *color, const char *s);
 /*
 ** file
 */
-char				*get_file_content(int fd);
+char 				*resolve_path(char *from, char *path);
 
 /*
 ** math

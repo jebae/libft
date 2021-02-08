@@ -79,7 +79,6 @@ SRC_IO = ft_putchar.c\
 	ft_putendl_fd.c\
 	ft_putnbr_fd.c\
 	put_color_str.c\
-	get_file_content.c\
 
 SRC_MATH = ft_pow.c\
 	ft_bit_reverse.c\
@@ -96,6 +95,8 @@ SRC_MATH = ft_pow.c\
 SRC_DATETIME = get_datetime.c\
 			   timedelta.c\
 
+SRC_FILE = resolve_path.c\
+
 SRC_GNL = get_next_line.c\
 
 # objs
@@ -104,6 +105,7 @@ OBJS += $(addprefix $(OBJDIR)/, $(SRC_STRING:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_IO:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_MATH:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_DATETIME:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_FILE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
 
 # compile objs
@@ -125,6 +127,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/math/%.c $(HEADERS)
 $(OBJDIR)/%.o: $(SRCDIR)/datetime/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+$(OBJDIR)/%.o: $(SRCDIR)/file/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(OBJDIR)/%.o: $(SRCDIR)/get_next_line/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
@@ -138,10 +143,13 @@ $(NAME): $(OBJDIR) $(OBJS)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
+def = ''
+
 # commands
 test: $(SRCDIR)/**/*.c $(SRCDIR)/**/*.test.cpp $(SRCDIR)/*.test.cpp $(HEADERS)
 	g++\
 		-Wall -Wextra -std=c++11\
+		$(def)\
 		-lgtest\
 		$(INCLUDES)\
 		$(SRCDIR)/**/*.c $(SRCDIR)/**/*.test.cpp $(SRCDIR)/*.test.cpp\
@@ -156,4 +164,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all pre_build post_build clean fclean re
+.PHONY: all pre_build post_build clean fclean re test
