@@ -93,11 +93,15 @@ SRC_MATH = ft_pow.c\
 	ft_max_int.c\
 
 SRC_DATETIME = get_datetime.c\
-			   timedelta.c\
+	timedelta.c\
 
 SRC_FILE = resolve_path.c\
 
 SRC_GNL = get_next_line.c\
+
+SRC_LIST = push.c\
+	remove.c\
+	init.c\
 
 # objs
 OBJS = $(addprefix $(OBJDIR)/, $(SRC_MEMORY:.c=.o))
@@ -107,6 +111,7 @@ OBJS += $(addprefix $(OBJDIR)/, $(SRC_MATH:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_DATETIME:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_FILE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/list_, $(SRC_LIST:.c=.o))
 
 # compile objs
 HEADERS = $(INCDIR)/libft.h\
@@ -131,6 +136,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/file/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/get_next_line/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR)/list_%.o: $(SRCDIR)/list/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # build

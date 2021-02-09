@@ -39,7 +39,7 @@ char	*strcat_all(size_t n, ...)
 	if (n == 0)
 		return (NULL);
 	va_start(ap, n);
-	concat = ft_strnew(1);
+	concat = ft_strnew(0);
 	if (concat == NULL)
 		return (NULL);
 	while (n)

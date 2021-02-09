@@ -41,6 +41,19 @@ typedef struct		s_datetime
 
 typedef				t_datetime t_timedelta;
 
+typedef struct		s_list_node
+{
+	void				*data;
+	struct s_list_node	*next;
+}					t_list_node;
+
+typedef struct		s_list
+{
+	size_t		length;
+	t_list_node	*head;
+	t_list_node	*tail;
+}					t_list;
+
 /*
 ** memory
 */
@@ -157,5 +170,13 @@ long long			ft_min_int(long long a, long long b);
 */
 int					get_datetime(time_t t, t_datetime *dt);
 int					timedelta(time_t t1, time_t t2, t_timedelta *td);
+
+/*
+** list
+*/
+void				init_list(t_list *list);
+void				clear_list(t_list *list);
+int					push_list_node(void *data, t_list *list);
+void				pop_list_node(size_t idx, t_list *list);
 
 #endif
