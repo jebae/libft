@@ -77,6 +77,7 @@ char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strncat(char *s1, const char *s2, size_t n);
+char				*strnewncat(char *s1, char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
@@ -120,6 +121,7 @@ char				*ft_strnstr(
 int					ft_hexatoi(const char *str);
 int					ft_ishexdigit(int c);
 int					ft_iswhitespace(char ch);
+int					isstrwhitespace(char *s);
 void				ft_to_utf8(wchar_t wch, char *utf8);
 int					ft_utf8_byte_len(char *utf8);
 
@@ -177,6 +179,7 @@ int					timedelta(time_t t1, time_t t2, t_timedelta *td);
 void				init_list(t_list *list);
 void				clear_list(t_list *list);
 int					push_list_node(void *data, t_list *list);
+int					pushleft_list_node(void *data, t_list *list);
 void				pop_list_node(size_t idx, t_list *list);
 
 #endif

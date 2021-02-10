@@ -16,3 +16,14 @@ int		ft_iswhitespace(char ch)
 {
 	return (ch == ' ' || (ch >= 0x09 && ch <= 0x0d));
 }
+
+int		isstrwhitespace(char *s)
+{
+	while (*s != '\0')
+	{
+		if (!ft_iswhitespace(*s))
+			return (0);
+		s++;
+	}
+	return (1);
+}
