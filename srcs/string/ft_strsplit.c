@@ -52,6 +52,19 @@ static const char	*split(char **p_str, const char *s, char c)
 	return (end + 1);
 }
 
+void				clear_arr(char **arr)
+{
+	int		i;
+
+	i = 0;
+	while (arr[i])
+	{
+		ft_memdel((void **)&arr[i]);
+		i++;
+	}
+	ft_memdel((void **)&arr);
+}
+
 char				**ft_strsplit(const char *s, char c)
 {
 	char		**arr;
@@ -66,7 +79,14 @@ char				**ft_strsplit(const char *s, char c)
 		return (NULL);
 	j = 0;
 	while (j < i)
+	{
 		s = split(arr + j++, s, c);
+		if (s == NULL)
+		{
+			clear_arr(arr);
+			return (NULL);
+		}
+	}
 	arr[i] = NULL;
 	return (arr);
 }
