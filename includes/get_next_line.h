@@ -16,8 +16,8 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-# define BUFF_SIZE	1023
-# define OPEN_MAX	256
+# define BUFF_SIZE		1023
+# define GNL_OPEN_MAX	256
 
 int		get_next_line(const int fd, char **line);
 

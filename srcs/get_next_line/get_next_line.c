@@ -50,9 +50,9 @@ static int	copy_buf(char *buf, int offset, int end, char **line)
 
 int			get_next_line(const int fd, char **line)
 {
-	static char		buf[OPEN_MAX][BUFF_SIZE + 1];
-	static int		cur[OPEN_MAX] = {BUFF_SIZE, };
-	static int		r[OPEN_MAX] = {BUFF_SIZE, };
+	static char		buf[GNL_OPEN_MAX][BUFF_SIZE + 1];
+	static int		cur[GNL_OPEN_MAX] = {BUFF_SIZE, };
+	static int		r[GNL_OPEN_MAX] = {BUFF_SIZE, };
 
 	if (line == NULL || fd < 0)
 		return (-1);

@@ -52,7 +52,7 @@ static const char	*split(char **p_str, const char *s, char c)
 	return (end + 1);
 }
 
-void				clear_arr(char **arr)
+static void			clear_arr(char **arr)
 {
 	int		i;
 
