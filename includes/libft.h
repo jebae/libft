@@ -54,6 +54,8 @@ typedef struct		s_list
 	t_list_node	*tail;
 }					t_list;
 
+typedef int			(*t_sort_cmp)(void *a, void *b);
+
 /*
 ** memory
 */
@@ -86,6 +88,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_isdigit(int c);
 int					ft_atoi(const char *str);
 long				ft_atol(const char *str);
+unsigned long long	ft_atoull(const char *str);
 double				ft_atof(const char *str);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
@@ -181,5 +184,10 @@ void				clear_list(t_list *list);
 int					push_list_node(void *data, t_list *list);
 int					pushleft_list_node(void *data, t_list *list);
 void				pop_list_node(size_t idx, t_list *list);
+
+/*
+** algo
+*/
+void				quick_sort(void **arr, int start, int end, t_sort_cmp cmp);
 
 #endif

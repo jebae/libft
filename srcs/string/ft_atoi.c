@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+int						ft_atoi(const char *str)
 {
 	unsigned long		res;
 	char				neg;
@@ -39,7 +39,7 @@ int			ft_atoi(const char *str)
 	return ((int)res * (neg ? neg : 1));
 }
 
-long		ft_atol(const char *str)
+long					ft_atol(const char *str)
 {
 	unsigned long		res;
 	char				neg;
@@ -64,4 +64,19 @@ long		ft_atol(const char *str)
 		(res / 10 == FT_LONG_LIMIT / 10 && res % 10 > FT_LONG_LIMIT % 10))
 		return (neg ? 0 : -1);
 	return ((long)res * (neg ? neg : 1));
+}
+
+unsigned long long		ft_atoull(const char *str)
+{
+	unsigned long long	res;
+
+	res = 0;
+	while (*str != '\0' && ft_iswhitespace(*str))
+		str++;
+	while (ft_isdigit(*str))
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	return (res);
 }
