@@ -114,7 +114,7 @@ OBJS += $(addprefix $(OBJDIR)/, $(SRC_DATETIME:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_FILE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/list_, $(SRC_LIST:.c=.o))
-OBJS += $(addprefix $(OBJDIR)/list_, $(SRC_ALGO:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/, $(SRC_ALGO:.c=.o))
 
 # compile objs
 HEADERS = $(INCDIR)/libft.h\
@@ -144,7 +144,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/get_next_line/%.c $(HEADERS)
 $(OBJDIR)/list_%.o: $(SRCDIR)/list/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJDIR)/algo_%.o: $(SRCDIR)/algo/%.c $(HEADERS)
+$(OBJDIR)/%.o: $(SRCDIR)/algo/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # build
