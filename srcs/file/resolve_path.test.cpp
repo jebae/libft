@@ -21,6 +21,26 @@ TEST(resolve_path, dotdot)
 	free(path);
 }
 
+TEST(resolve_path, relative_file_path_without_dot)
+{
+	char	*path = resolve_path(
+		(char *)"/usr/bin/local", (char *)"file.txt"
+	);
+
+	ASSERT_STREQ(path, "/usr/bin/local/file.txt");
+	free(path);
+}
+
+TEST(resolve_path, relative_dir_path_without_dot)
+{
+	char	*path = resolve_path(
+		(char *)"/usr/bin/local", (char *)"hey/file.txt"
+	);
+
+	ASSERT_STREQ(path, "/usr/bin/local/hey/file.txt");
+	free(path);
+}
+
 TEST(resolve_path, dotdot_from_one_dir)
 {
 	char	*path = resolve_path(
