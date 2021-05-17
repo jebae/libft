@@ -102,6 +102,7 @@ SRC_GNL = get_next_line.c\
 SRC_LIST = push.c\
 	remove.c\
 	init.c\
+	sort.c\
 
 SRC_ALGO = quick_sort.c\
 

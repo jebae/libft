@@ -184,6 +184,7 @@ void				clear_list(t_list *list);
 int					push_list_node(void *data, t_list *list);
 int					pushleft_list_node(void *data, t_list *list);
 void				pop_list_node(size_t idx, t_list *list);
+void				sort_list(t_list *list, t_sort_cmp cmp);
 
 /*
 ** algo
