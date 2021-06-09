@@ -1,5 +1,11 @@
 #include <gtest/gtest.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "libft.h"
+#ifdef __cplusplus
+}
+#endif
 
 TEST(strcat_all, one_str)
 {

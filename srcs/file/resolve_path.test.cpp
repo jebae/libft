@@ -1,5 +1,11 @@
 #include <gtest/gtest.h>
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "libft.h"
+#ifdef __cplusplus
+}
+#endif
 
 TEST(resolve_path, absolute_path)
 {

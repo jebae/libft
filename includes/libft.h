@@ -54,6 +54,25 @@ typedef struct		s_list
 	t_list_node	*tail;
 }					t_list;
 
+typedef struct		s_tree_node
+{
+	void				*key;
+	void				*val;
+	struct s_tree_node	*left;
+	struct s_tree_node	*right;
+	int					height;
+}					t_tree_node;
+
+typedef int			(*t_key_cmp)(void *a, void *b);
+typedef void		(*t_clear_tree_node)(t_tree_node *node);
+
+typedef struct		s_avl_tree
+{
+	t_key_cmp			cmp_key;
+	t_clear_tree_node	clear_node;
+	t_tree_node			*root;
+}					t_avl_tree;
+
 typedef int			(*t_sort_cmp)(void *a, void *b);
 
 /*
@@ -185,6 +204,21 @@ int					push_list_node(void *data, t_list *list);
 int					pushleft_list_node(void *data, t_list *list);
 void				pop_list_node(size_t idx, t_list *list);
 void				sort_list(t_list *list, t_sort_cmp cmp);
+
+/*
+** AVL tree
+*/
+void				init_avl_tree(
+	t_avl_tree *tree, t_key_cmp cmp_key, t_clear_tree_node clear_node);
+void				clear_avl_tree(t_avl_tree *tree);
+int					insert_avl_tree_node(
+	void *key, void *val, t_avl_tree *tree);
+void				*get_avl_tree_val(void *key, t_avl_tree *tree);
+int					get_tree_node_height(t_tree_node *node);
+void				update_tree_node_height(t_tree_node *node);
+int					get_tree_node_balance(t_tree_node *node);
+t_tree_node			*balance_tree(t_tree_node *node);
+void				remove_avl_tree_node(void *key, t_avl_tree *tree);
 
 /*
 ** algo

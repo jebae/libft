@@ -13,8 +13,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I ./$(INCDIR)
 
-LIBS = -L . -lft
-
 # srcs
 SRC_MEMORY = ft_memset.c\
 	ft_bzero.c\
@@ -104,6 +102,14 @@ SRC_LIST = push.c\
 	init.c\
 	sort.c\
 
+SRC_AVL_TREE = init.c\
+	rotate.c\
+	insert.c\
+	remove.c\
+	clear.c\
+	height.c\
+	get.c\
+
 SRC_ALGO = quick_sort.c\
 
 # objs
@@ -115,6 +121,7 @@ OBJS += $(addprefix $(OBJDIR)/, $(SRC_DATETIME:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_FILE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/list_, $(SRC_LIST:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/avl_tree_, $(SRC_AVL_TREE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_ALGO:.c=.o))
 
 # compile objs
@@ -145,6 +152,9 @@ $(OBJDIR)/%.o: $(SRCDIR)/get_next_line/%.c $(HEADERS)
 $(OBJDIR)/list_%.o: $(SRCDIR)/list/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+$(OBJDIR)/avl_tree_%.o: $(SRCDIR)/avl_tree/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(OBJDIR)/%.o: $(SRCDIR)/algo/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
@@ -161,13 +171,14 @@ $(OBJDIR):
 def = ''
 
 # commands
-test: $(SRCDIR)/**/*.c $(SRCDIR)/**/*.test.cpp $(SRCDIR)/*.test.cpp $(HEADERS)
+test: all
 	g++\
 		-Wall -Wextra -std=c++11\
 		$(def)\
 		-lgtest\
+		-L . -lft\
 		$(INCLUDES)\
-		$(SRCDIR)/**/*.c $(SRCDIR)/**/*.test.cpp $(SRCDIR)/*.test.cpp\
+		$(wildcard $(SRCDIR)/**/*.test.cpp) $(wildcard $(SRCDIR)/*.test.cpp)\
 		-o test
 
 clean:
@@ -179,4 +190,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all pre_build post_build clean fclean re test
+.PHONY: all pre_build post_build clean fclean re
