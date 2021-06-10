@@ -73,6 +73,12 @@ typedef struct		s_avl_tree
 	t_tree_node			*root;
 }					t_avl_tree;
 
+typedef struct		s_hashmap
+{
+	unsigned int	size;
+	t_avl_tree		*table;
+}					t_hashmap;
+
 typedef int			(*t_sort_cmp)(void *a, void *b);
 
 /*
@@ -219,6 +225,19 @@ void				update_tree_node_height(t_tree_node *node);
 int					get_tree_node_balance(t_tree_node *node);
 t_tree_node			*balance_tree(t_tree_node *node);
 void				remove_avl_tree_node(void *key, t_avl_tree *tree);
+
+/*
+** hashmap
+*/
+int					init_hashmap(
+	unsigned int size, t_hashmap *hash,
+	t_key_cmp cmp, t_clear_tree_node clear_node);
+
+void				clear_hashmap(t_hashmap *hash);
+void				*get_hashmap(char *key, t_hashmap *hash);
+int					set_hashmap(char *key, void *val, t_hashmap *hash);
+unsigned int		get_hashmap_key(char *key, unsigned int size);
+void				remove_hashmap(char *key, t_hashmap *hash);
 
 /*
 ** algo

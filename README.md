@@ -71,6 +71,7 @@ int ft_strequ(const char *s1, const char *s2);
 int ft_strnequ(const char *s1, const char *s2, size_t n);
 char *ft_strsub(const char *s, unsigned int start, size_t len);
 char *ft_strjoin(const char *s1, const char *s2);
+char *strcat_all(size_t n, ...);
 char *ft_strtrim(const char *s);
 char **ft_strsplit(const char *s, char c);
 char *ft_itoa(int n);
@@ -137,4 +138,68 @@ int ft_is_inf_l(long double num);
 int ft_is_nan_l(long double num);
 long long ft_max_int(long long a, long long b);
 long long ft_min_int(long long a, long long b);
+```
+
+<br><br>
+
+## datetime
+
+```c
+int get_datetime(time_t t, t_datetime *dt);
+int timedelta(time_t t1, time_t t2, t_timedelta *td);
+```
+
+<br><br>
+
+## list
+
+```c
+void init_list(t_list *list);
+void clear_list(t_list *list);
+int push_list_node(void *data, t_list *list);
+int pushleft_list_node(void *data, t_list *list);
+void pop_list_node(size_t idx, t_list *list);
+void sort_list(t_list *list, t_sort_cmp cmp);
+```
+
+<br><br>
+
+## AVL tree
+
+```c
+void init_avl_tree(
+	t_avl_tree *tree, t_key_cmp cmp_key, t_clear_tree_node clear_node);
+void clear_avl_tree(t_avl_tree *tree);
+int insert_avl_tree_node(
+	void *key, void *val, t_avl_tree *tree);
+void *get_avl_tree_val(void *key, t_avl_tree *tree);
+int get_tree_node_height(t_tree_node *node);
+void update_tree_node_height(t_tree_node *node);
+int get_tree_node_balance(t_tree_node *node);
+t_tree_node *balance_tree(t_tree_node *node);
+void remove_avl_tree_node(void *key, t_avl_tree *tree);
+```
+
+<br><br>
+
+## Hashmap
+
+```c
+int init_hashmap(
+	unsigned int size, t_hashmap *hash,
+	t_key_cmp cmp, t_clear_tree_node clear_node);
+
+void clear_hashmap(t_hashmap *hash);
+void *get_hashmap(char *key, t_hashmap *hash);
+int set_hashmap(char *key, void *val, t_hashmap *hash);
+unsigned intget_hashmap_key(char *key, unsigned int size);
+void remove_hashmap(char *key, t_hashmap *hash);
+```
+
+<br><br>
+
+## algorithm
+
+```c
+void quick_sort(void **arr, int start, int end, t_sort_cmp cmp);
 ```

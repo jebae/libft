@@ -110,6 +110,12 @@ SRC_AVL_TREE = init.c\
 	height.c\
 	get.c\
 
+SRC_HASHMAP = init.c\
+	set.c\
+	remove.c\
+	key.c\
+	get.c\
+
 SRC_ALGO = quick_sort.c\
 
 # objs
@@ -122,6 +128,7 @@ OBJS += $(addprefix $(OBJDIR)/, $(SRC_FILE:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_GNL:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/list_, $(SRC_LIST:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/avl_tree_, $(SRC_AVL_TREE:.c=.o))
+OBJS += $(addprefix $(OBJDIR)/hashmap_, $(SRC_HASHMAP:.c=.o))
 OBJS += $(addprefix $(OBJDIR)/, $(SRC_ALGO:.c=.o))
 
 # compile objs
@@ -153,6 +160,9 @@ $(OBJDIR)/list_%.o: $(SRCDIR)/list/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJDIR)/avl_tree_%.o: $(SRCDIR)/avl_tree/%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR)/hashmap_%.o: $(SRCDIR)/hashmap/%.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJDIR)/%.o: $(SRCDIR)/algo/%.c $(HEADERS)
