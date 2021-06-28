@@ -238,6 +238,7 @@ void				*get_hashmap(char *key, t_hashmap *hash);
 int					set_hashmap(char *key, void *val, t_hashmap *hash);
 unsigned int		get_hashmap_key(char *key, unsigned int size);
 void				remove_hashmap(char *key, t_hashmap *hash);
+int					get_hashmap_keys(t_hashmap *hash, t_list *keys);
 
 /*
 ** algo
