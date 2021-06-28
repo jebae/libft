@@ -50,6 +50,20 @@ protected:
 	}
 };
 
+TEST_F(GetHashmapKeysTest, empty)
+{
+	t_list	key_list;
+
+	// execute
+	ASSERT_EQ(get_hashmap_keys(&hash, &key_list), 0);
+
+	// test keys
+	ASSERT_EQ(key_list.length, (size_t)0);
+
+	// clear
+	clear_list(&key_list);
+}
+
 TEST_F(GetHashmapKeysTest, one_exist)
 {
 	char 	*key = (char *)"key";
